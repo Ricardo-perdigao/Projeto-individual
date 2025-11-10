@@ -1,6 +1,6 @@
 🌿 Triskelion — Cultura e Misticismo Celta
 
-![Floresta](<img width="1024" height="576" alt="image" src="https://github.com/user-attachments/assets/84ef9e9b-77dd-4de0-afd4-4346f6c5b233" />)
+![Floresta](https://voceconseguetudo.com.br/wp-content/webp-express/webp-images/uploads/2025/02/mitologia-celta-pedra-ancestral.jpg.webp)
 
 ## 🌌 Sobre o Projeto
 
