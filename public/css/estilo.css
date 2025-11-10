@@ -1,0 +1,573 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Merriweather', Georgia, 'Times New Roman', serif;
+  background-color: black;
+  background-color: var(--noite);
+  background-attachment: fixed;
+  background-position: center;
+  background-image: url('../assets/imgs/linhas-verdes.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+}
+
+
+
+:root {
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+  --terra: #6B4F3A;
+  --musgo: #4B6B3A;
+  --folha: #8CBF66;
+  --ouro: #C9A34A;
+  --nevoa: #E9E7E1;
+  --noite: #0F1720;
+}
+
+.container {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  height: var(--tamanho-header);
+  background-color: var(--noite);
+  border-bottom: 2px solid #32b9cd;
+}
+
+.header .container {
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.header a {
+  text-decoration: none;
+  color: #e3b062;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar {
+  background-color: var(--noite);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--ouro);
+
+  color: var(--ouro);
+}
+
+.titulo {
+  color: #32b9cd;
+  width: fit-content;
+  font-weight: 500;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-area img {
+  width: 50px;
+  height: auto;
+}
+
+
+.header h1 {
+  margin: 0;
+}
+
+/* BANNER */
+.banner {
+  position: relative;
+  height: var(--tamanho-banner);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
+.banner .video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(60%);
+}
+
+.banner .container {
+  z-index: 1;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.banner .container p {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+.rituais {
+  padding: 60px 0;
+}
+
+.rituais .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ritual-box {
+  background-color: var(--noite);
+  color: var(--nevoa);
+  padding: 2rem;
+  border-radius: 20px;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.ritual-box h2 {
+  color: var(--ouro);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 2px solid var(--folha);
+  padding-bottom: 0.5rem;
+}
+
+.ritual-box h3 {
+  margin-top: 18px;
+  color: var(--folha);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.ritual-box p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.elementos {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.elementos li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(233, 231, 225, 0.1);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.elementos .ico {
+  font-size: 20px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 8px;
+  background: rgba(233, 231, 225, 0.15);
+  color: var(--ouro);
+}
+
+.elementos .nome {
+  font-weight: 700;
+  margin-right: 6px;
+  color: var(--folha);
+}
+
+@media (max-width: 720px) {
+  .ritual-box {
+    padding: 20px;
+  }
+
+  .ritual-box h2 {
+    font-size: 22px;
+  }
+
+  .ritual-box p {
+    font-size: 15px;
+  }
+}
+
+/* MISSÃO VISÃO VALORES */
+
+.social {
+  padding: 60px 0;
+}
+
+.social .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.box {
+  align-items: start;
+  justify-content: flex-start;
+  background-color: var(--noite);
+  color: var(--nevoa);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(15, 23, 32, 0.4);
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.box h1 {
+  color: var(--ouro);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 2px solid var(--folha);
+  padding-bottom: 0.5rem;
+}
+
+.box p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.ritual-box img {
+  width: 250px;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem auto;
+}
+
+/*CSS para imagem da pagina Misticismo (pelo amor de deus se você tocar a imagem explode)*/
+.misticismo {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  right: 50%;
+  margin-left: -50%;
+  margin-right: 50%;
+  background-image: url('../assets/imgs/fundo2.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+  min-height: 125%;
+}
+
+.Simbologias {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  right: 50%;
+  margin-left: -50%;
+  margin-right: 50%;
+  background-image: url('../assets/imgs/Simbologias.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+  min-height: 125%;
+}
+
+/* FOOTER */
+
+.footer {
+  background-color: var(--noite);
+  height: 150px;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+/* LOGIN */
+
+.login {
+  height: var(--tamanho-login);
+  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-size: cover;
+}
+
+.login .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 50%;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: palevioletred;
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+.formulario {
+  display: flex;
+  height: 90%;
+  width: 80%;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.formulario span {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.formulario input {
+  border: 2px solid #32b9cd;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.formulario select {
+  border: 2px solid #32b9cd;
+  background-color: white;
+  color: gray;
+  height: 36px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding: 5px 0;
+}
+
+.botao {
+  cursor: pointer;
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: #ED145B;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.loading-div {
+  width: 50px;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+#div_erros_login {
+  display: none
+}
+
+/* FORMULARIO */
+
+.alerta_erro {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #ED145B 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #32b9cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #ED145B;
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+/* SIMULADOR */
+
+.simulador {
+  color: white;
+}
+
+.simulador .container {
+  flex-direction: column;
+  overflow: scroll;
+  height: var(--tamanho-simulador);
+}
+
+/* ALERTA */
+
+#alerta {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.mensagem-alarme {
+  background-color: white;
+  border-radius: 5px;
+  width: 300px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.mensagem-alarme h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mensagem-alarme .informacao {
+  width: 66%;
+}
+
+.alarme-sino {
+  width: 48px;
+  height: 48px;
+  animation-name: bell;
+  animation-duration: 4s;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
+  background-size: cover;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bell {
+  0% {
+    transform: rotate(25deg)
+  }
+
+  25% {
+    transform: rotate(-25deg)
+  }
+
+  50% {
+    transform: rotate(25deg)
+  }
+
+  75% {
+    transform: rotate(-25deg)
+  }
+
+  100% {
+    transform: rotate(25deg)
+  }
+}
