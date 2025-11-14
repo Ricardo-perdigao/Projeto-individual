@@ -19,76 +19,155 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-      <h1 class="titulo">Triskelion</h1>
+       <div class="logo-area">
+        <img src="/assets/imgs/triskelion_transparente.png" alt="logo">
+      </div>
       <ul class="navbar">
-          <li class="agora">
-            <a href="historia.html">Inicial</a>
-          </li>
-          <li>
-            <a href="misticismo.html">Misticismo</a>
-          </li>
-          <li>
-            <a href="simbologias.html">Simbologias</a>
-          </li>
-          <li>
-            <a href="literatura.html">Literatura</a>
-          </li>
-          <li>
-            <a href="gastronomia.html">Gastronomia</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
+        <li class="agora">
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>
+          <a href="misticismo.html">Misticismo</a>
+        </li>
+        <li>
+          <a href="simbologias.html">Simbologias</a>
+        </li>
+        <li>
+          <a href="literatura.html">Literatura</a>
+        </li>
+        <li>
+          <a href="gastronomia.html">Gastronomia</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
     </div>
   </div>
   <!--header fim-->
 
-  <div class="login">
-    <div class="alerta_erro">
-      <div class="card_erro" id="cardErro">
-        <span id="mensagem_erro"></span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="card card-cadastro">
-        <h2>Bem-vindo!</h2>
-        <div class="formulario">
-          <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
-          <div class="campo">
-            <span>Código de ativação:</span>
-            <input id="codigo_input" type="text" placeholder="Insira aqui seu código" />
-          </div>
-          <div class="campo">
-            <span>Nome:</span>
-            <input id="nome_input" type="text" placeholder="Seu nome" />
-          </div>
-          <div class="campo">
-            <span>E-mail:</span>
-            <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-          </div>
-          <div class="campo">
-            <span>Senha:</span>
-            <input id="senha_input" type="password" placeholder="******" />
-          </div>
-          <div class="campo">
-            <span>Confirmação da Senha:</span>
-            <input id="confirmacao_senha_input" type="password" placeholder="******" />
-          </div>
-          <button class="botao" onclick="cadastrar()">Cadastrar</button>
-        </div>
-        <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
+  <div class="banner">
+    <div class="literatura"></div>
+  </div>
 
-        <div id="div_erros_login"></div>
+  <!-- data-aos="fade-up" data-aos-duration="2000" -->
+  <div class="social">
+    <div class="container">
+      <div class="boxes">
+        <div class="box">
+          <ul class="ritual-box">
+            <img src="/assets/imgs/filha da floresta.jpg" alt="filha da floresta">
+            <h1>Filha da Floresta:</h1>
+            <p>
+            <p>Uma trilogia que aborda uma familia celta antiga lutando contra os bretões (atual inglaterra) por
+              território, quando a mãe das crianças morre, e seu pai intensifica a batalha contra seus inimigos. Anos se
+              passam desde a morte da mãe da familia, quando o pai, Lorde Colon, se casa novamente com Lady Oonagh, uma
+              feiticeira que encanta o Lorde e amaldiçoa os filhos a bestialidade, transformando-os em patos, tendo
+              agora como responsabilidade da única garota da família, Sorcha, a reverter a situação e recuperar sua
+              familia da insanidade da feiticeira Oonagh. </p>
+            </p>
+        </div>
+        <div class="rituais">
+          <div class="container">
+            <div class="ritual-box">
+              <img src="/assets/imgs/filho das sombras.jpg" alt="filho das sombras">
+              <h2>Filho das sombras:</h2>
+
+              <p>
+                Liadan, filha de Sorcha do livro anterior, possui dons de cura e "visão". Ela é avisada pelos espíritos
+                da floresta para ficar em Sevenwaters para que as ilhas sagradas sejam reconquistadas dos bretões.
+              </p>
+              <p>
+                Conflito: Liadan é sequestrada pelo temido “homem pintado”, um mercenário cruel, mas descobre que ele é
+                diferente do que as lendas dizem. Ela se sente atraída por ele, mas precisa decidir se seu amor pode
+                colocar Sevenwaters em risco.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rituais">
+          <div class="container">
+            <div class="ritual-box">
+              <img src="/assets/imgs/Filha da profecia.jpg" alt="filha da profecia">
+              <h2>Filha da profecia:</h2>
+
+              <p>Fainne, neta de Lady Oonagh, é a protagonista desse terceiro livro.</p>
+              <p>
+                Lady Oonagh obriga Fainne a usar sua magia para se infiltrar em Sevenwaters, com o objetivo de impedir
+                que
+                seu tio e aliados recuperem as ilhas sagradas tomadas por invasores escandinavos.
+              </p>
+              <p>
+                Conflito central: Fainne se vê dividida entre a missão de ódio imposta pela avó e o amor que sente pela
+                família, forçada a escolher entre o bem e o mal para cumprir uma profecia.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rituais">
+          <div class="container">
+            <div class="ritual-box">
+              <img src="/assets/imgs/ilusão do tempo.jpg" alt="ilusão do tempo">
+              <h2>A ilusão do tempo:</h2>
+
+              <p>O livro trabalha a história do nosso mundo em ruínas devido a problemas financeiros, fazendo com que
+                pessoas entrem em caixas pretas que a criogenizam a fim de não serem afetadas pela crise financeira.
+                Crianças começam a despertar da sua caixa aleatoriamente, e vagando pelas ruas vazias, cobertas de
+                musgos e gramíneas, encontram uma velha que os conta uma história sobre uma princesa de um reino antigo
+                e um rei dominador, e com essa história, as crianças conseguem despertar os adultos do seu dito sono
+                eterno.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rituais">
+          <div class="container">
+            <div class="ritual-box">
+              <img src="/assets/imgs/mitos e lendas.jpg" alt="mitos e lendas">
+              <h2>Mitos e lendas celtas: </h2>
+
+              <p>
+                Mitos e Lendas Celtas reúne a mitologia dos celtas insulares, notadamente da Irlanda e do País de Gales,
+                recontando lendas, na forma de mitos e histórias, em fascinantes narrativas onde deuses e heróis se
+                confundem. Rei Artur, Távola Redonda, deuses britânicos e toda a tradição dos druidas narrados num texto
+                bastante atual.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rituais">
+          <div class="container">
+            <div class="ritual-box">
+              <img src="/assets/imgs/irlanda celta.jpg" alt="irlanda celta">
+              <h2>Mitos e lendas da Irlanda celta: </h2>
+
+              <p>
+                Reunindo antigas narrativas irlandesas, o primeiro volume da obra máxima de Lady Augusta Gregory retrata
+                o surgimento e as proezas dos Tuatha de Danann, considerados deuses e portadores de poderes
+                sobrenaturais, bem como as aventuras dos Fianna, guerreiros liderados pelo lendário Finn, filho de
+                Cumhal.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="rituais">
+          <div class="container">
+            <div class="ritual-box">
+              <img src="/assets/imgs/magia celta.jpg" alt="magia celta">
+              <h2>Magia Celta: </h2>
+
+              <p>
+                Encantos, Ritos e Sabedoria Ancestral, de Victor Valentim, é mais do que um livro: é um portal. Uma
+                ponte entre mundos, um reencontro com a espiritualidade da Terra e com a sabedoria dos povos celtas, que
+                viveram em comunhão com as florestas, os elementos, os deuses e os mistérios da alma.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

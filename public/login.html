@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>Triskelion | Login</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -21,13 +21,12 @@
 
     <div class="header">
         <div class="container">
-            <h1 class="titulo">Triskelion</h1>
+            <div class="logo-area">
+                <img src="/assets/imgs/triskelion_transparente.png" alt="logo">
+            </div>
             <ul class="navbar">
                 <li>
-                    <a href="historia.html">Inicial</a>
-                </li>
-                <li>
-                    <a href="simulador.html">Simulador</a>
+                    <a href="index.html">Inicial</a>
                 </li>
                 <li>|</li>
                 <li class="agora">
@@ -39,34 +38,37 @@
             </ul>
         </div>
     </div>
-
-
-    <div class="login">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+    <div class="banner1">
+        <video autoplay muted loop playsinline class="video-bg">
+            <source src="./assets/video/login.mp4" type="video/mp4">
+        </video>
+        <div class="login">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Olá de volta!</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
+            <div class="container">
+                <div class="card">
+                    <h2>Olá de volta!</h2>
+                    <div class="formulario">
+                        <div class="campo">
+                            <span>E-mail:</span>
+                            <input id="email_input" type="text" placeholder="Login">
+                        </div>
+                        <div class="campo">
+                            <span>Senha:</span>
+                            <input id="senha_input" type="password" placeholder="******">
+                        </div>
+                        <button class="botao" onclick="entrar()">Entrar</button>
                     </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
+
+                    <div id="div_aguardar" class="loading-div">
+                        <img src="/assets/circle-loading.gif" id="loading-gif">
                     </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
-                </div>
 
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <div id="div_erros_login"></div>
                 </div>
-
-                <div id="div_erros_login"></div>
             </div>
         </div>
     </div>

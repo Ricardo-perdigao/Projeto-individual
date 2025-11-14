@@ -52,7 +52,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #e3b062;
+  color: var(--ouro);
 }
 
 .agora {
@@ -71,12 +71,6 @@ body {
   color: var(--ouro);
 
   color: var(--ouro);
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
 }
 
 .logo-area {
@@ -106,7 +100,28 @@ body {
   overflow: hidden;
 }
 
+.banner1 {
+  position: relative;
+  height: var(--tamanho-banner);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: white;
+  overflow: hidden;
+}
+
 .banner .video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(60%);
+}
+
+.banner1 .video-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -315,6 +330,23 @@ body {
   min-height: 125%;
 }
 
+.literatura {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  right: 50%;
+  margin-left: -50%;
+  margin-right: 50%;
+  background-image: url('../assets/imgs/fadas.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+  min-height: 125%;
+}
+
+
 /* FOOTER */
 
 .footer {
@@ -336,30 +368,27 @@ body {
 
 /* LOGIN */
 
-.login {
-  height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
 
-.login .container {
-  justify-content: center;
+.container {
+  justify-content: flex-end;
   align-items: center;
   height: 100%;
+  display: flex;
 }
 
 .card {
-  width: 50%;
-  background-color: #e5e5e5;
+  height: var(--tamanho-login); 
+  width: 500px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  color: palevioletred;
+  color: var(--ouro);
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
 }
+
 
 .card h2 {
   margin: 0;
