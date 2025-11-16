@@ -5,21 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemplo - Quiz</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/estilo.css">
 </head>
 
-
+<body>
+    <body>
+    <div class="header">
+    <div class="container">
+      <div class="logo-area">
+        <img src="./assets/imgs/triskelion_transparente.png" alt="logo">
+      </div>
+      <ul class="navbar">
+        <li class="agora">
+          <a href="index.html">Inicial</a>
+        </li>
+        <li>
+          <a href="misticismo.html">Misticismo</a>
+        </li>
+        <li>
+          <a href="simbologias.html">Simbologias</a>
+        </li>
+        <li>
+          <a href="literatura.html">Literatura</a>
+        </li>
+        <li>
+          <a href="gastronomia.html">Gastronomia</a>
+        </li>
+        <li>
+          <a href="quiz.html">Quizz</a>
+        </li>
+        <li>|</li>
+        <li>
+          <a href="login.html">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html">Cadastro</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
 <body onload="onloadEsconder()">
     <div id="pontuacaoEJogo">
-        <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+        <button id="btnIniciarQuiz" onclick="iniciarQuiz()" class="botao" style="display: flex; justify-content: center; align-items: center; margin-top: 250px; margin-left: auto;
+        margin-right: auto; margin-bottom: auto; width: 400px; padding: 100px; font-size: 40px;">INICIAR QUIZ</button>
 
-        <div id="pontuacao" class="flex-colunar width-fit-content border-primary">
+        <div id="pontuacao" class="box_quiz">
             <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
                 <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
                 <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
             </div>
-            <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+            <div id="pontuacaoFinalJogo">
                 <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
                     <span id="spanPontuacaoFinal">***</span>
                 </span>
@@ -27,7 +64,7 @@
             </div>
         </div>
 
-        <div id="jogo" class="width-fit-content flex-colunar border-secondary">
+        <div id="jogo" class="box_quiz">
 
             <div id="infoQuestao" class="padding-8">
                 <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
@@ -36,6 +73,9 @@
 
             <div id="perguntaDaQuestaoAtual" class="padding-8">
                 <span id="spanQuestaoExibida" class="text-bold"></span>
+            </div>
+            <div id="imagemDaQuestao" style="text-align: center;">
+                <img id="imgQuestao" src=""> <!--A imagem funciona, mas essa caceta não centralizaaaa-->
             </div>
 
             <div id="infoAlternativas" class="padding-8">
@@ -67,7 +107,6 @@
                 <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
                 <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
             </div>
-
         </div>
     </div>
 </body>
@@ -77,31 +116,60 @@
     const listaDeQuestoes = [
 
         {
-            pergunta: "Qual mês tem 30 dias?",
-            alternativaA: "Janeiro",
-            alternativaB: "Dezembro",
-            alternativaC: "Junho",
-            alternativaD: "Agosto",
+            pergunta: "Qual o nome desse símbolo?",
+            imagem: "./assets/imgs/Espero que agora vai.png",
+            alternativaA: "Triskle",
+            alternativaB: "Triqueta",
+            alternativaC: "Crann Bethadh",
+            alternativaD: "Cruz celta",
+            alternativaCorreta: "alternativaA"
+        },
+
+        {
+            pergunta: "Qual o nome desse símbolo?",
+            imagem: "./assets/imgs/Triqueta.png",
+            alternativaA: "Triskle",
+            alternativaB: "Triqueta",
+            alternativaC: "Crann Bethadh",
+            alternativaD: "Cruz celta",
+            alternativaCorreta: "alternativaB"
+        },
+
+        {
+            pergunta: "Qual o nome desse símbolo?",
+            imagem: "./assets/imgs/Crann Bethadh.png",
+            alternativaA: "Triskle",
+            alternativaB: "Triqueta",
+            alternativaC: "Crann Bethadh",
+            alternativaD: "Cruz celta",
             alternativaCorreta: "alternativaC"
         },
-
         {
-            pergunta: "Quantas horas tem em um dia?",
-            alternativaA: "30 horas",
-            alternativaB: "38 horas",
-            alternativaC: "48 horas",
-            alternativaD: "24 horas",
+            pergunta: "Qual o nome desse símbolo?",
+            imagem: "./assets/imgs/cruz-celta.png",
+            alternativaA: "Triskle",
+            alternativaB: "Triqueta",
+            alternativaC: "Crann Bethadh",
+            alternativaD: "Cruz celta",
             alternativaCorreta: "alternativaD"
         },
-
         {
-            pergunta: "Qual destes números é ímpar?",
-            alternativaA: "Dez",
-            alternativaB: "Doze",
-            alternativaC: "Oito",
-            alternativaD: "Onze",
-            alternativaCorreta: "alternativaD"
-        }
+            pergunta: "Qual o simbolo que remete presente, passado e futuro?",
+            alternativaA: "Triskle",
+            alternativaB: "Triqueta",
+            alternativaC: "Crann Bethadh",
+            alternativaD: "Cruz celta",
+            alternativaCorreta: "alternativaA"
+        },
+        {
+            pergunta: "Principais ingredientes do hidromel",
+            alternativaA: "Mel, agua e frutas",
+            alternativaB: "Mel, agua e leveduras",
+            alternativaC: "Cerveja, frutas e leveduras",
+            alternativaD: "Cerveja, agua e mel",
+            alternativaCorreta: "alternativaB"
+        },
+
 
     ]
 
@@ -138,6 +206,7 @@
         habilitarAlternativas(true)
         const questaoAtual = listaDeQuestoes[index]
         numeroDaQuestaoAtual = index
+
         console.log("questaoAtual")
         console.log(questaoAtual)
         document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
@@ -146,6 +215,14 @@
         document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
         document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
         document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+
+        if (questaoAtual.imagem) { /* Configura para aparecer imagens no quiz (segundo o stack overflow) */
+            const img = document.getElementById("imgQuestao");
+            img.src = questaoAtual.imagem;
+            img.style.display = "block";
+        } else {
+            document.getElementById("imgQuestao").style.display = "none";
+        }
     }
 
     function submeter() {
@@ -272,14 +349,14 @@
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
 
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        document.getElementById('jogo').classList.add("text-new-gray")
 
         btnProx.disabled = true
         btnSubmeter.disabled = true
@@ -287,4 +364,6 @@
         btnTentarNovamente.disabled = false
 
     }
+
+
 </script>

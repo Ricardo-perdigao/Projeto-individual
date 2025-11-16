@@ -28,6 +28,7 @@ body {
   --ouro: #C9A34A;
   --nevoa: #E9E7E1;
   --noite: #0F1720;
+  --corQueAMinhaNamoradaEscolheu: #8c8c8c;
 }
 
 .container {
@@ -41,7 +42,7 @@ body {
 .header {
   height: var(--tamanho-header);
   background-color: var(--noite);
-  border-bottom: 2px solid #32b9cd;
+  border-bottom: 2px solid;
 }
 
 .header .container {
@@ -68,8 +69,6 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  color: var(--ouro);
-
   color: var(--ouro);
 }
 
@@ -165,6 +164,7 @@ body {
 .ritual-box {
   background-color: var(--noite);
   color: var(--nevoa);
+   border: 2px solid var(--ouro);
   padding: 2rem;
   border-radius: 20px;
   max-width: 700px;
@@ -275,7 +275,48 @@ body {
   line-height: 1.6;
 }
 
-.box h1 {
+#pontuacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#imgQuestao {
+  max-width: 80px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+#jogo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.box_quiz {
+  display: flex;
+  background-color: var(--noite);
+  border: 2px solid var(--ouro);
+  color: var(--nevoa);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(15, 23, 32, 0.4);
+  max-width: 600px;
+  line-height: 1.6;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.box_quiz h1 {
   color: var(--ouro);
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -284,7 +325,23 @@ body {
   padding-bottom: 0.5rem;
 }
 
+.box h1 {
+  color: var(--ouro);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 2px solid var(--ouro);
+  padding-bottom: 0.5rem;
+}
+
 .box p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.box_quiz p {
+  align-content: center;
   margin-bottom: 1rem;
   font-size: 1rem;
   text-align: justify;
@@ -297,53 +354,41 @@ body {
   margin: 0 auto 1rem auto;
 }
 
-/*CSS para imagem da pagina Misticismo (pelo amor de deus se você tocar a imagem explode)*/
-.misticismo {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  right: 50%;
-  margin-left: -50%;
-  margin-right: 50%;
-  background-image: url('../assets/imgs/fundo2.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: var(--nevoa);
-  display: flex;
-  min-height: 125%;
-}
+/*CSS para imagem da pagina Misticismo (pelo amor de deus se você tocar a imagem explode)*/ /*Consegui mexer e não fuder o resto da imagem, mas ainda tá pixelizada */
+  .misticismo {
+    position: relative;
+    width: 98%;
+    min-height: 100vh;
+    background-image: url('../assets/imgs/fundo2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--nevoa);
+    display: flex;
+  }
 
 .Simbologias {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  right: 50%;
-  margin-left: -50%;
-  margin-right: 50%;
+  position: relative;
+  width: 98%;
+  min-height: 100vh;
   background-image: url('../assets/imgs/Simbologias.jpg');
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   color: var(--nevoa);
   display: flex;
-  min-height: 125%;
 }
 
 .literatura {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  right: 50%;
-  margin-left: -50%;
-  margin-right: 50%;
+  position: relative;
+  width: 98%;
+  min-height: 100%;
   background-image: url('../assets/imgs/fadas.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   color: var(--nevoa);
   display: flex;
-  min-height: 125%;
 }
 
 
@@ -409,7 +454,8 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid var(--ouro
+  );
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -417,7 +463,7 @@ body {
 
 .formulario select {
   border: 2px solid #32b9cd;
-  background-color: white;
+  background-color:var(--noite);
   color: gray;
   height: 36px;
   text-align: center;
@@ -428,8 +474,10 @@ body {
 .campo {
   display: flex;
   flex-direction: column;
-  justify-content: start;
   padding: 5px 0;
+}
+.campo input {
+  background-color: var(--corQueAMinhaNamoradaEscolheu);
 }
 
 .botao {
@@ -439,8 +487,8 @@ body {
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
-  background-color: #ED145B;
+  color: var(--noite);
+  background-color: var(--musgo);
   width: 120px;
   height: 30px;
   align-self: center;

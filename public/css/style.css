@@ -24,10 +24,6 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-button {
-    font-family: monospace;
-    font-weight: bold;
-}
 
 .flex-colunar {
     display: flex;
@@ -39,11 +35,11 @@ button {
 }
 
 .border-primary {
-    border: 3px solid var(--primary-brand-color);
+    border: 3px solid var(--ouro);
 }
 
 .border-secondary {
-    border: 3px solid var(--secondary-brand-color);
+    border: 3px solid var(--ouro);
 }
 
 .padding-8 {
