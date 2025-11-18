@@ -26,26 +26,25 @@
           <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="misticismo.html">Misticismo</a>
+          <a id="misticismo" href="misticismo.html" style="display: none;">Misticismo</a>
         </li>
         <li>
-          <a href="simbologias.html">Simbologias</a>
+          <a id="simbologias" href="simbologias.html" style="display: none;">Simbologias</a>
         </li>
         <li>
-          <a href="literatura.html">Literatura</a>
+          <a id="literatura" href="literatura.html" style="display: none;">Literatura</a>
         </li>
         <li>
-          <a href="gastronomia.html">Gastronomia</a>
+          <a id="gastronomia" href="gastronomia.html" style="display: none;">Gastronomia</a>
         </li>
         <li>
-          <a href="quiz.html">Quizz</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
+          <a id="quiz" href="quiz.html" style="display: none;">Quiz</a>
         </li>
         <li>
-          <a href="cadastro.html">Cadastro</a>
+          <a id="login" href="login.html" style="display: none;">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html" style="display: none;">Cadastro</a>
         </li>
       </ul>
     </div>
@@ -78,18 +77,21 @@
         <div class="box">
           <div class="ritual-box">
             <img src="./assets/imgs/hidromel.png">
-            <h1>Hidromel</h1>
+            <h1><a onclick="aparecer()" style="cursor: pointer;">Hidromel</a></h1>
             <ul class="elementos">
               <h3>Ingredientes</h3>
               <li><span class="ico">X</span><span class="nome">1 kg de mel de boa qualidade</li>
               <li><span class="ico">X</span><span class="nome">3 litros de água filtrada</li>
               <li><span class="ico">X</span><span class="nome">1 sachê de fermento para vinho (ou hidromel)</li>
-              <li><span class="ico">X</span><span class="nome">1 colher de chá de melhorador de fermento (opcional, mas ajuda muito)</li>
+              <li><span class="ico">X</span><span class="nome">1 colher de chá de melhorador de fermento (opcional, mas
+                  ajuda muito)</li>
               <h3>Modo de preparo</h3>
-              <li><span class="ico">X</span><span class="nome">Aqueça levemente 1 litro de água e dissolva o mel até ficar homogêneo</li>
-              <li><span class="ico">X</span><span class="nome">Coloque o resto da água e deixe esfrir até aproximadamente 25º ou menos (importante para não matar o fermento)</li>
+              <li><span class="ico">X</span><span class="nome">Aqueça levemente 1 litro de água e dissolva o mel até
+                  ficar homogêneo</li>
+              <li><span class="ico">X</span><span class="nome">Coloque o resto da água e deixe esfrir até
+                  aproximadamente 25º ou menos (importante para não matar o fermento)</li>
               <li><span class="ico">X</span><span class="nome"></li>
-                
+
             </ul>
           </div>
         </div>
@@ -119,8 +121,16 @@
     <div class="container">
       <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
       <span class="version">v1.0.0</span>
+      <p style="font-size: 20px; text-align: right; margin-left: 50px;">clique no hidromel!!!</p>
     </div>
   </div>
 </body>
+<script>
+  function aparecer() {
+    sessionStorage.setItem("quizDesbloqueado", "true");
+    navbar()
+  }
+</script>
+<script src="./js/navbar.js"></script>
 
 </html>

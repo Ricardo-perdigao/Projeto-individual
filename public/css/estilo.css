@@ -433,6 +433,7 @@ body {
   display: flex;
 }
 
+
 .card {
   height: var(--tamanho-login); 
   width: 500px;

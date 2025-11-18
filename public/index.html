@@ -19,33 +19,32 @@
   <div class="header">
     <div class="container">
       <div class="logo-area">
-        <img src="./assets/imgs/triskelion_transparente.png" alt="logo">
+        <img onclick="mostrar()" style="cursor: pointer;" src="./assets/imgs/triskelion_transparente.png" alt="logo">
       </div>
       <ul class="navbar">
         <li class="agora">
           <a href="index.html">Inicial</a>
         </li>
         <li>
-          <a href="misticismo.html">Misticismo</a>
+          <a id="misticismo" href="misticismo.html" style="display: none;">Misticismo</a>
         </li>
         <li>
-          <a href="simbologias.html">Simbologias</a>
+          <a id="simbologias" href="simbologias.html" style="display: none;">Simbologias</a>
         </li>
         <li>
-          <a href="literatura.html">Literatura</a>
+          <a id="literatura" href="literatura.html" style="display: none;">Literatura</a>
         </li>
         <li>
-          <a href="gastronomia.html">Gastronomia</a>
+          <a id="gastronomia" href="gastronomia.html" style="display: none;">Gastronomia</a>
         </li>
         <li>
-          <a href="quiz.html">Quizz</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html">Login</a>
+          <a id="quiz" href="quiz.html" style="display: none;">Quiz</a>
         </li>
         <li>
-          <a href="cadastro.html">Cadastro</a>
+          <a id="login" href="login.html" style="display: none;">Login</a>
+        </li>
+        <li>
+          <a href="cadastro.html" style="display: none;">Cadastro</a>
         </li>
       </ul>
     </div>
@@ -80,7 +79,9 @@
 
             <h3> A sociedade celta era organizada em três classes: </h3>
             <ul class="elementos">
-              <li><span class="ico">🌿</span><span class="nome">Druidas:</span>sacerdotes, sábios e guardiões da
+              <li><span class="ico">🌿</span><span class="nome">
+                  <p onclick="aparecer()" style="cursor: pointer;">Druidas:</p>
+                </span>sacerdotes, sábios e guardiões da
                 tradição oral.</li>
 
               <li><span class="ico">⚔️</span><span class="nome">Guerreiros:</span> defensores da tribo e da honra.</li>
@@ -94,49 +95,58 @@
           </ul>
         </div>
         <div class="box">
-            <div class="ritual-box">
-              <h2>Rituais Celtas</h2>
+          <div class="ritual-box">
+            <h2>Rituais Celtas</h2>
 
-              <p>
-                Os rituais celtas eram celebrações do ciclo da natureza, da vida e do espírito.
-                Para os celtas, tudo (a terra, os rios, o vento, os deuses, os mortos e os vivos) fazia parte de um
-                mesmo fluxo sagrado. Seus ritos buscavam honrar essa conexão e manter o equilíbrio entre os mundos.
-              </p>
+            <p>
+              Os rituais celtas eram celebrações do ciclo da natureza, da vida e do espírito.
+              Para os celtas, tudo (a terra, os rios, o vento, os deuses, os mortos e os vivos) fazia parte de um
+              mesmo fluxo sagrado. Seus ritos buscavam honrar essa conexão e manter o equilíbrio entre os mundos.
+            </p>
 
-              <p>
-                Ao invés de templos de pedra, os locais sagrados eram nemetons (florestas, rios, colinas e
-                nascentes).
-                Os rituais aconteciam ao ar livre, sob a lua ou o sol, em contato direto com os elementos. Os rituais
-                eram momentos coletivos onde pessoas se reuniam para celebrar sua fé e conexão com o mundo espiritual,
-                com a presença de um druida guiando a celebração.
-              </p>
+            <p>
+              Ao invés de templos de pedra, os locais sagrados eram nemetons (florestas, rios, colinas e
+              nascentes).
+              Os rituais aconteciam ao ar livre, sob a lua ou o sol, em contato direto com os elementos. Os rituais
+              eram momentos coletivos onde pessoas se reuniam para celebrar sua fé e conexão com o mundo espiritual,
+              com a presença de um druida guiando a celebração.
+            </p>
 
-              <h3>Elementos e seus significados</h3>
+            <h3>Elementos e seus significados</h3>
 
-              <ul class="elementos">
-                <li><span class="ico">🌬️</span><span class="nome">Ar:</span> sabedoria e inspiração.</li>
-                <li><span class="ico">🔥</span><span class="nome">Fogo:</span> transformação e purificação.</li>
-                <li><span class="ico">🌊</span><span class="nome">Água:</span> cura e emoção.</li>
-                <li><span class="ico">🌍</span><span class="nome">Terra:</span> estabilidade e fertilidade.</li>
-                <p>A terra representa estabilidade, fertilidade e nutrição.
-                <p>A água simboliza emoção, intuição e
-                  purificação.</p>
-                <p>O fogo representa paixão, energia e transformação.</p>
-                <p> E o ar simboliza intelecto,
-                  comunicação e liberdade.</p>
-              </ul>
-            </div>
+            <ul class="elementos">
+              <li><span class="ico">🌬️</span><span class="nome">Ar:</span> sabedoria e inspiração.</li>
+              <li><span class="ico">🔥</span><span class="nome">Fogo:</span> transformação e purificação.</li>
+              <li><span class="ico">🌊</span><span class="nome">Água:</span> cura e emoção.</li>
+              <li><span class="ico">🌍</span><span class="nome">Terra:</span> estabilidade e fertilidade.</li>
+              <p>A terra representa estabilidade, fertilidade e nutrição.
+              <p>A água simboliza emoção, intuição e
+                purificação.</p>
+              <p>O fogo representa paixão, energia e transformação.</p>
+              <p> E o ar simboliza intelecto,
+                comunicação e liberdade.</p>
+            </ul>
           </div>
         </div>
+      </div>
     </div>
   </div>
 
   <div class="footer">
     <div class="container">
       <h4>Feito com amor por aluno &hearts; SPTech &copy; 2025</h4>
-      <span class="version">v1.0.0</span>
+      <span class="version">v1.0.0</span><br>
+          <p style="font-size: 20px; text-align: right; margin-left: 50px;">clique no logo!!!</p>
     </div>
   </div>
 </body>
+<script>
+  function mostrar() {
+    sessionStorage.setItem("misticismoDesbloqueado", "true");
+    sessionStorage.setItem("simbologiasDesbloqueado", "true");
+    navbar()
+  }
+</script>
+<script src="./js/navbar.js"></script>
 
 </html>

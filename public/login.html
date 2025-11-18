@@ -85,7 +85,7 @@
 </body>
 
 </html>
-
+<script src="./js/navbar.js"></script>
 <script>
 
 
@@ -129,7 +129,6 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";
@@ -142,7 +141,6 @@
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
-                    console.error(texto);
                     finalizarAguardar(texto);
                 });
             }

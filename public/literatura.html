@@ -26,27 +26,27 @@
         <li class="agora">
           <a href="index.html">Inicial</a>
         </li>
-        <li>
-          <a href="misticismo.html">Misticismo</a>
+         <li>
+          <a id="misticismo" href="misticismo.html" style="display: none;">Misticismo</a>
         </li>
         <li>
-          <a href="simbologias.html">Simbologias</a>
+          <a id="simbologias" href="simbologias.html" style="display: none;">Simbologias</a>
         </li>
         <li>
-          <a href="literatura.html">Literatura</a>
+          <a id="literatura" href="literatura.html" style="display: none;">Literatura</a>
         </li>
         <li>
-          <a href="gastronomia.html">Gastronomia</a>
+          <a id="gastronomia" href="gastronomia.html" style="display: none;">Gastronomia</a>
         </li>
         <li>
-          <a href="quiz.html">Quizz</a>
+          <a id="quiz" href="quiz.html" style="display: none;">Quiz</a>
         </li>
         <li>|</li>
         <li>
-          <a href="login.html">Login</a>
+          <a id="login" href="login.html" style="display: none;">Login</a>
         </li>
         <li>
-          <a href="cadastro.html">Cadastro</a>
+          <a href="cadastro.html" style="display: none;">Cadastro</a>
         </li>
       </ul>
     </div>
@@ -114,7 +114,7 @@
         <div class="rituais">
           <div class="box">
             <div class="ritual-box">
-              <img src="./assets/imgs/ilusão do tempo.jpg" alt="ilusão do tempo">
+              <img onclick="aparecer()" src="./assets/imgs/ilusão do tempo.jpg" alt="ilusão do tempo">
               <h2>A ilusão do tempo:</h2>
 
               <p>O livro trabalha a história do nosso mundo em ruínas devido a problemas financeiros, fazendo com que
@@ -184,120 +184,11 @@
   </div>
   <!--footer fim-->
 </body>
-
-</html>
-
 <script>
-
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
-  function cadastrar() {
-    // aguardar();
-
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
-
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+  function aparecer(){
+    sessionStorage.setItem("loginDesbloqueado", "true")
+    navbar()
     }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    return false;
-  }
-
-  // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
-
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
 </script>
+<script src="./js/navbar.js"></script>
+</html>
