@@ -41,6 +41,8 @@
 🖋️ Créditos
 
 Desenvolvido por: Ricardo Perdigão
+📚 Projeto acadêmico — SPTech School (2025)
+💻 Inspirado pela mitologia e sabedoria dos antigos celtas.
 
 ---
 
@@ -48,5 +50,3 @@ Desenvolvido por: Ricardo Perdigão
 
   - https://trello.com/b/Xg4jhfyy/triskelion
     
-📚 Projeto acadêmico — SPTech School (2025)
-💻 Inspirado pela mitologia e sabedoria dos antigos celtas.
