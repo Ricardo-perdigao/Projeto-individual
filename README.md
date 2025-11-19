@@ -40,9 +40,9 @@
 
 🖋️ Créditos
 
-Desenvolvido por: Ricardo Perdigão
-📚 Projeto acadêmico — SPTech School (2025)
-💻 Inspirado pela mitologia e sabedoria dos antigos celtas.
+- Desenvolvido por: Ricardo Perdigão
+- 📚 Projeto acadêmico — SPTech School (2025)
+- 💻 Inspirado pela mitologia e sabedoria dos antigos celtas.
 
 ---
 
