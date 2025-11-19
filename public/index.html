@@ -136,11 +136,31 @@
     <div class="container">
       <h4>Feito com amor por aluno &hearts; SPTech &copy; 2025</h4>
       <span class="version">v1.0.0</span><br>
-          <p style="font-size: 20px; text-align: right; margin-left: 50px;">clique no logo!!!</p>
+      <p style="font-size: 20px; text-align: right; margin-left: 50px;">clique no logo!!!</p>
     </div>
   </div>
 </body>
 <script>
+  fetch("/progresso/acesso", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      visitorID: VISITOR_ID,
+      pagina: "misticismo"
+    })
+  });
+
+  function desbloquear(pagina) {
+    fetch("/progresso/desbloquear", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        visitorID: VISITOR_ID,
+        pagina: pagina
+      })
+    });
+  }
+
   function mostrar() {
     sessionStorage.setItem("misticismoDesbloqueado", "true");
     sessionStorage.setItem("simbologiasDesbloqueado", "true");

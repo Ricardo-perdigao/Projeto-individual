@@ -19,14 +19,14 @@
   <!--header inicio-->
   <div class="header">
     <div class="container">
-       <div class="logo-area">
+      <div class="logo-area">
         <img src="./assets/imgs/triskelion_transparente.png" alt="logo">
       </div>
       <ul class="navbar">
         <li class="agora">
           <a href="index.html">Inicial</a>
         </li>
-         <li>
+        <li>
           <a id="misticismo" href="misticismo.html" style="display: none;">Misticismo</a>
         </li>
         <li>
@@ -185,10 +185,20 @@
   <!--footer fim-->
 </body>
 <script>
-  function aparecer(){
+  function aparecer() {
     sessionStorage.setItem("loginDesbloqueado", "true")
     navbar()
-    }
+  }
+
+  fetch("/progresso/acesso", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      visitorID: VISITOR_ID,
+      pagina: "misticismo"
+    })
+  });
 </script>
 <script src="./js/navbar.js"></script>
+
 </html>

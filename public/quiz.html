@@ -10,168 +10,157 @@
 </head>
 
 <body>
+
     <body>
-    <div class="header">
-    <div class="container">
-      <div class="logo-area">
-        <img src="./assets/imgs/triskelion_transparente.png" alt="logo">
-      </div>
-      <ul class="navbar">
-        <li class="agora">
-          <a href="index.html">Inicial</a>
-        </li>
-         <li>
-          <a id="misticismo" href="misticismo.html" style="display: none;">Misticismo</a>
-        </li>
-        <li>
-          <a id="simbologias" href="simbologias.html" style="display: none;">Simbologias</a>
-        </li>
-        <li>
-          <a id="literatura" href="literatura.html" style="display: none;">Literatura</a>
-        </li>
-        <li>
-          <a id="gastronomia" href="gastronomia.html" style="display: none;">Gastronomia</a>
-        </li>
-        <li>
-          <a id="quiz" href="quiz.html" style="display: none;">Quiz</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a id="login" href="login.html" style="display: none;">Login</a>
-        </li>
-        <li>
-          <a href="cadastro.html">Cadastro</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</body>
-<body onload="onloadEsconder()">
-    <div id="pontuacaoEJogo">
-        <button id="btnIniciarQuiz" onclick="iniciarQuiz()" class="botao" style="display: flex; justify-content: center; align-items: center; margin-top: 250px; margin-left: auto;
+        <div class="header">
+            <div class="container">
+                <div class="logo-area">
+                    <img src="./assets/imgs/triskelion_transparente.png" alt="logo">
+                </div>
+                <ul class="navbar">
+                    <li class="agora">
+                        <a href="index.html">Inicial</a>
+                    </li>
+                    <li>
+                        <a id="misticismo" href="misticismo.html" style="display: none;">Misticismo</a>
+                    </li>
+                    <li>
+                        <a id="simbologias" href="simbologias.html" style="display: none;">Simbologias</a>
+                    </li>
+                    <li>
+                        <a id="literatura" href="literatura.html" style="display: none;">Literatura</a>
+                    </li>
+                    <li>
+                        <a id="gastronomia" href="gastronomia.html" style="display: none;">Gastronomia</a>
+                    </li>
+                    <li>
+                        <a id="quiz" href="quiz.html" style="display: none;">Quiz</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <a id="login" href="login.html" style="display: none;">Login</a>
+                    </li>
+                    <li>
+                        <a href="cadastro.html">Cadastro</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+
+    <body onload="onloadEsconder(); carregarQuiz()">
+        <div id="pontuacaoEJogo">
+            <button id="btnIniciarQuiz" onclick="iniciarQuiz()" class="botao" style="display: flex; justify-content: center; align-items: center; margin-top: 250px; margin-left: auto;
         margin-right: auto; margin-bottom: auto; width: 400px; padding: 100px; font-size: 40px;">INICIAR QUIZ</button>
 
-        <div id="pontuacao" class="box_quiz">
-            <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+            <div id="pontuacao" class="box_quiz">
+                <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                    <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                    <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                </div>
+                <div id="pontuacaoFinalJogo">
+                    <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                        <span id="spanPontuacaoFinal">***</span>
+                    </span>
+                    <span id="msgFinal" class="width-fit-content">***</span>
+                </div>
             </div>
-            <div id="pontuacaoFinalJogo">
-                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                    <span id="spanPontuacaoFinal">***</span>
-                </span>
-                <span id="msgFinal" class="width-fit-content">***</span>
+
+            <div id="jogo" class="box_quiz">
+
+                <div id="infoQuestao" class="padding-8">
+                    <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                        questões.</span>
+                </div>
+
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                    <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+                <div id="imagemDaQuestao" style="text-align: center;">
+                    <img id="imgQuestao" src=""> <!--A imagem funciona, mas essa caceta não centralizaaaa-->
+                </div>
+
+                <div id="infoAlternativas" class="padding-8">
+                    <span><em>Escolha uma opção dentre as abaixo:</em></span>
+                </div>
+
+                <div id="opcoes" class="flex-colunar padding-8">
+                    <span>
+                        <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                        <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                        <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                        <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                    </span>
+                    <span>
+                        <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                        <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                    </span>
+                </div>
+
+                <div id="botoes" class="flex-colunar padding-8">
+                    <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                    <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                    <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
+                    <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                </div>
             </div>
         </div>
-
-        <div id="jogo" class="box_quiz">
-
-            <div id="infoQuestao" class="padding-8">
-                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                    questões.</span>
-            </div>
-
-            <div id="perguntaDaQuestaoAtual" class="padding-8">
-                <span id="spanQuestaoExibida" class="text-bold"></span>
-            </div>
-            <div id="imagemDaQuestao" style="text-align: center;">
-                <img id="imgQuestao" src=""> <!--A imagem funciona, mas essa caceta não centralizaaaa-->
-            </div>
-
-            <div id="infoAlternativas" class="padding-8">
-                <span><em>Escolha uma opção dentre as abaixo:</em></span>
-            </div>
-
-            <div id="opcoes" class="flex-colunar padding-8">
-                <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                </span>
-                <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                </span>
-                <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                </span>
-                <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                </span>
-            </div>
-
-            <div id="botoes" class="flex-colunar padding-8">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <!-- <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button> -->
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-            </div>
-        </div>
-    </div>
-</body>
+    </body>
 
 </html>
 <script>
-    const listaDeQuestoes = [
+    fetch("/progresso/acesso", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            visitorID: VISITOR_ID,
+            pagina: "misticismo"
+        })
+    });
 
-        {
-            pergunta: "Qual o nome desse símbolo?",
-            imagem: "./assets/imgs/Espero que agora vai.png",
-            alternativaA: "Triskle",
-            alternativaB: "Triqueta",
-            alternativaC: "Crann Bethadh",
-            alternativaD: "Cruz celta",
-            alternativaCorreta: "alternativaA"
-        },
+    function finalizarQuiz() {
+        let acertos = calcularAcertos();
+        let total = perguntas.length;
 
-        {
-            pergunta: "Qual o nome desse símbolo?",
-            imagem: "./assets/imgs/Triqueta.png",
-            alternativaA: "Triskle",
-            alternativaB: "Triqueta",
-            alternativaC: "Crann Bethadh",
-            alternativaD: "Cruz celta",
-            alternativaCorreta: "alternativaB"
-        },
+        fetch("/quiz/salvarResultado", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                visitorID: VISITOR_ID,
+                acertos: acertos,
+                totalPerguntas: total
+            })
+        });
 
-        {
-            pergunta: "Qual o nome desse símbolo?",
-            imagem: "./assets/imgs/Crann Bethadh.png",
-            alternativaA: "Triskle",
-            alternativaB: "Triqueta",
-            alternativaC: "Crann Bethadh",
-            alternativaD: "Cruz celta",
-            alternativaCorreta: "alternativaC"
-        },
-        {
-            pergunta: "Qual o nome desse símbolo?",
-            imagem: "./assets/imgs/cruz-celta.png",
-            alternativaA: "Triskle",
-            alternativaB: "Triqueta",
-            alternativaC: "Crann Bethadh",
-            alternativaD: "Cruz celta",
-            alternativaCorreta: "alternativaD"
-        },
-        {
-            pergunta: "Qual o simbolo que remete presente, passado e futuro?",
-            alternativaA: "Triskle",
-            alternativaB: "Triqueta",
-            alternativaC: "Crann Bethadh",
-            alternativaD: "Cruz celta",
-            alternativaCorreta: "alternativaA"
-        },
-        {
-            pergunta: "Principais ingredientes do hidromel",
-            alternativaA: "Mel, agua e frutas",
-            alternativaB: "Mel, agua e leveduras",
-            alternativaC: "Cerveja, frutas e leveduras",
-            alternativaD: "Cerveja, agua e mel",
-            alternativaCorreta: "alternativaB"
-        },
+        mostrarResultadoNaTela();
+    }
 
+    let listaDeQuestoes = [];
 
-    ]
+    // Função para puxar as perguntas do banco
+    async function carregarQuiz() {
+        try {
+            const response = await fetch("http://localhost:3333/quiz/listar");
+            const dados = await response.json();
+
+            listaDeQuestoes = dados;
+
+            quantidadeDeQuestoes = listaDeQuestoes.length;
+
+            document.getElementById("qtdQuestoes").innerHTML = quantidadeDeQuestoes;
+
+        } catch (erro) {
+            console.error("Erro ao carregar quiz:", erro);
+            alert("Não foi possível carregar o quiz do servidor.");
+        }
+    }
+
 
     // variáveis globais    
     let numeroDaQuestaoAtual = 0
@@ -180,7 +169,6 @@
     let certas = 0
     let erradas = 0
     let quantidadeDeQuestoes = listaDeQuestoes.length
-    // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
 
     function onloadEsconder() {
         document.getElementById('pontuacao').style.display = "none"
@@ -281,12 +269,12 @@
     }
 
     function checarResposta() {
-        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
-        const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+        const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual]
+        const respostaQuestaoAtual = questaoAtual.alternativaCorreta 
 
-        const options = document.getElementsByName("option"); // recupera alternativas no html
+        const options = document.getElementsByName("option");
 
-        let alternativaCorreta = null // variável para armazenar a alternativa correta
+        let alternativaCorreta = null
 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
@@ -295,7 +283,7 @@
             }
         })
 
-        // verifica se resposta assinalada é correta
+        // verifica se resposta assinalada é correta ou não
         options.forEach((option) => {
             if (option.checked === true && option.value === respostaQuestaoAtual) {
                 document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")

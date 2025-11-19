@@ -93,7 +93,14 @@
 </html>
 
 <script>
-
+  fetch("/progresso/acesso", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      visitorID: VISITOR_ID,
+      pagina: "misticismo"
+    })
+  });
   // Array para armazenar empresas cadastradas para validação de código de ativação 
 
   function cadastrar() {

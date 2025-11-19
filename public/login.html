@@ -87,7 +87,14 @@
 </html>
 <script src="./js/navbar.js"></script>
 <script>
-
+    fetch("/progresso/acesso", {
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({
+    visitorID: VISITOR_ID,
+    pagina: "misticismo"
+  })
+});
 
     function entrar() {
         aguardar();
