@@ -1,4 +1,4 @@
-🌿 Triskelion — Cultura e Misticismo Celta
+🌿 Triskelion — Cultura e Misticismo Celta (siga os espíritos)
 
 ![Floresta](https://voceconseguetudo.com.br/wp-content/webp-express/webp-images/uploads/2025/02/mitologia-celta-pedra-ancestral.jpg.webp)
 
@@ -40,6 +40,13 @@
 
 🖋️ Créditos
 
-Desenvolvido por: Ricardo Perdigão
-📚 Projeto acadêmico — SPTech School (2025)
-💻 Inspirado pela mitologia e sabedoria dos antigos celtas.
+- Desenvolvido por: Ricardo Perdigão
+- 📚 Projeto acadêmico — SPTech School (2025)
+- 💻 Inspirado pela mitologia e sabedoria dos antigos celtas.
+
+---
+
+## 🔗link
+
+  - https://trello.com/b/Xg4jhfyy/triskelion
+    
