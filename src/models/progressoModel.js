@@ -25,10 +25,9 @@ function registrarAcesso(visitorID, pagina) {
     return garantirVisitante(visitorID).then(() => {
         var sql = `
             INSERT INTO progresso_visitante (idVisitante, pagina, acessos)
-            SELECT idVisitante, '${pagina}', 1
-            FROM visitante WHERE visitorID = '${visitorID}'
-            ON DUPLICATE KEY UPDATE acessos = acessos + 1,
-                ultimaAtualizacao = CURRENT_TIMESTAMP;
+            SELECT idVisitante, 'misticismo', 1
+            FROM visitante WHERE visitorID = '758f94d2-6a63-4c3d-89a0-00ebcfe4072f'
+            ON DUPLICATE KEY UPDATE acessos = acessos + 1;
         `;
         return database.executar(sql);
     });
@@ -36,7 +35,7 @@ function registrarAcesso(visitorID, pagina) {
 
 function listar(visitorID) {
     var sql = `
-        SELECT pagina, desbloqueou, acessos, ultimaAtualizacao
+        SELECT pagina, desbloqueou, acessos,
         FROM progresso_visitante
         WHERE idVisitante = (SELECT idVisitante FROM visitante WHERE visitorID = '${visitorID}');
     `;

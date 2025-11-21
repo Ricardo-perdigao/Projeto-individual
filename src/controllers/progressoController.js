@@ -1,37 +1,47 @@
 var progressoModel = require("../models/progressoModel");
 
 function desbloquear(req, res) {
-    var visitorID = req.body.visitorID;
-    var pagina = req.body.pagina;
+    const { visitorID, pagina } = req.body;
+
+    if (!visitorID || !pagina) {
+        return res.status(400).json({ erro: "visitorID e pagina são obrigatórios." });
+    }
 
     progressoModel.desbloquear(visitorID, pagina)
-        .then(() => res.status(200).json({ ok: true }))
-        .catch(erro => {
-            console.error(erro);
-            res.status(500).json(erro);
+        .then(r => res.status(200).json(r))
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
         });
 }
 
 function registrarAcesso(req, res) {
-    var visitorID = req.body.visitorID;
-    var pagina = req.body.pagina;
+    const { visitorID, pagina } = req.body;
+
+    if (!visitorID || !pagina) {
+        return res.status(400).json({ erro: "visitorID e pagina são obrigatórios." });
+    }
 
     progressoModel.registrarAcesso(visitorID, pagina)
-        .then(() => res.status(200).json({ ok: true }))
-        .catch(erro => {
-            console.error(erro);
-            res.status(500).json(erro);
+        .then(r => res.status(200).json(r))
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
         });
 }
 
 function listar(req, res) {
-    var visitorID = req.params.visitorID;
+    const visitorID = req.params.visitorID;
+
+    if (!visitorID) {
+        return res.status(400).json({ erro: "visitorID é obrigatório." });
+    }
 
     progressoModel.listar(visitorID)
-        .then(resultado => res.status(200).json(resultado))
-        .catch(erro => {
-            console.error(erro);
-            res.status(500).json(erro);
+        .then(r => res.status(200).json(r))
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
         });
 }
 

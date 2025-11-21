@@ -1,0 +1,9 @@
+# Query: cadastroAuto
+# ContextLines: 1
+
+1 result - 1 file
+
+public\index.html:
+  192  
+  193:   document.addEventListener("DOMContentLoaded", cadastroAuto);
+  194  

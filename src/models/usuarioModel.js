@@ -1,28 +1,33 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
-function autenticar(email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
-    var instrucaoSql = `
-        SELECT idusuario, nome, email FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+function autenticar(login, senha) {
+    var login_curto = login.substring(0, 8); 
+    var senha = 'visitante'
+
+    var instrucao = `
+        SELECT idvisitante, visitorID
+        FROM visitante
+        WHERE 
+            (
+                LEFT(visitorID, 8) = '${login_curto}' 
+            )
+        AND senha = '${senha}';
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("SQL autenticar:", instrucao);
+    return database.executar(instrucao);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(nome, email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
-    var instrucaoSql = `
-        INSERT INTO usuario (nome, email, senha) VALUES ('${nome}', '${email}', '${senha}');
+function vincularVisitorID(idUsuario, visitorID) {
+    var instrucao = `
+        UPDATE visitante
+        SET visitorID = '${visitorID}'
+        WHERE idvisitante = ${idUsuario};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("SQL vincularVisitorID:", instrucao);
+    return database.executar(instrucao);
 }
 
 module.exports = {
     autenticar,
-    cadastrar
+    vincularVisitorID
 };

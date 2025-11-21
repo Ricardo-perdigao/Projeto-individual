@@ -1,41 +1,63 @@
-var database = require("../database/config")
+var database = require("../database/config");
 
 function listar() {
-    var instrucaoSql = `
-  select idvisitante as 'ID do Usuario', truncate(avg(aproveitamento),2) as Aproveitamento, Usuario.nome as 'Nome' from Quiz join Usuario on idvisitante = idUsuario group by idvisitante order by Aproveitamento desc limit 5;
+    console.log("Executando quizModel.listar()");
+    var instrucao = `
+        SELECT id, pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta
+        FROM quiz;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("SQL:", instrucao);
+    return database.executar(instrucao);
 }
 
-
-function buscar() {
-    var instrucaoSql = `
-select Usuario.nome as 'Nome', avg(QtdAcertos) as 'QtdAcertos' from quiz join Usuario on idvisitante = idUsuario group by idUsuario; 
+function buscar(id) {
+    console.log("Executando quizModel.buscar() - id:", id);
+    var instrucao = `
+        SELECT id, pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta
+        FROM quiz
+        WHERE id = ${id};
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("SQL:", instrucao);
+    return database.executar(instrucao);
 }
 
-function cadastrar(Usuario, Aproveitamento, QtdAcertos) {
-    var instrucaoSql = `
-        INSERT INTO quiz (idvisitante, Aproveitamento, QtdAcertos) VALUES (${Usuario}, ${Aproveitamento} , ${QtdAcertos});
+function cadastrar(pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta) {
+    console.log("Executando quizModel.cadastrar()");
+    var instrucao = `
+        INSERT INTO quiz (pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta)
+        VALUES ('${pergunta}', ${imagem ? `'${imagem}'` : "NULL"}, '${alternativaA}', '${alternativaB}', '${alternativaC}', '${alternativaD}', '${alternativaCorreta}');
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    console.log("SQL:", instrucao);
+    return database.executar(instrucao);
 }
 
-function opinar(Usuario, avaliação) {
-    var instrucaoSql = `
-    insert into opiniões (idvisitante, Opinião) values ('${Usuario}', '${avaliação}')
+function garantirVisitante(visitorID) {
+    var instrucao = `
+        INSERT INTO visitante (visitorID)
+        VALUES ('${visitorID}')
+        ON DUPLICATE KEY UPDATE visitorID = visitorID;
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+    return database.executar(instrucao);
+}
+
+function salvarResultado(visitorID, acertos, totalPerguntas) {
+    console.log("Executando quizModel.salvarResultado()");
+    return garantirVisitante(visitorID)
+    .then(() => {
+        var instrucao = `
+            INSERT INTO quiz_resultado (idVisitante, acertos, totalPerguntas)
+            SELECT idVisitante, ${acertos}, ${totalPerguntas}
+            FROM visitante
+            WHERE visitorID = '${visitorID}';
+        `;
+        console.log("SQL:", instrucao);
+        return database.executar(instrucao);
+    });
 }
 
 module.exports = {
-    cadastrar,
     listar,
-    opinar,
-    buscar
+    buscar,
+    cadastrar,
+    salvarResultado
 };

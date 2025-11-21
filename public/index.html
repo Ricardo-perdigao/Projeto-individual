@@ -140,7 +140,59 @@
     </div>
   </div>
 </body>
+
 <script>
+
+  if (!localStorage.getItem("VISITOR_ID")) {
+    localStorage.setItem("VISITOR_ID", crypto.randomUUID());
+  }
+
+  async function autocadastro() {
+
+    if (localStorage.getItem("AUTO_ACCOUNT_CREATED") === "true") {
+      console.log("Conta automática já existia.");
+      return;
+    }
+
+    fetch("/usuarios/autocadastro", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        visitorID: localStorage.getItem("VISITOR_ID")
+      })
+    })
+      .then(r => r.json())
+      .then(dados => {
+
+        console.log("Conta automática criada:", dados);
+
+        localStorage.setItem("AUTO_ACCOUNT_CREATED", "true");
+
+        sessionStorage.CODIGO = dados.codigo;
+        sessionStorage.SENHA = dados.senha;
+        sessionStorage.VISITOR_ID = dados.visitorID;
+
+        fetch("/usuarios/autenticar", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            emailServer: dados.codigo,
+            senhaServer: dados.senha,
+            visitorID: dados.visitorID
+          })
+        })
+          .then(r => r.json())
+          .then(login => {
+            sessionStorage.ID_USUARIO = login.idUsuario;
+            console.log("Login automático concluído.");
+          });
+      })
+      .catch(err => console.error(err));
+  }
+
+  document.addEventListener("DOMContentLoaded", autocadastro);
+
+
   fetch("/progresso/acesso", {
     method: "POST",
     headers: { "Content-Type": "application/json" },

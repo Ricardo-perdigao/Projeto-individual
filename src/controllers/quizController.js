@@ -1,107 +1,67 @@
 var quizModel = require("../models/quizModel");
 
-
-
-function cadastrar(req, res) {
-    var Usuario = req.body.UsuarioServer
-    var Aproveitamento = req.body.AproveitamentoServer;
-    var QtdAcertos = req.body.TotalAcertosServer;
-
-    if (Usuario == undefined) {
-        res.status(400).send("Seu Usuario está undefined!");
-    }
-    else if (Aproveitamento == undefined) {
-        res.status(400).send("Seu Aproveitamento está undefined!");
-    }
-    else if (QtdAcertos == undefined) {
-        res.status(400).send("Seu QtdAcertos está undefined!");
-    }
-
-    quizModel.cadastrar(Usuario, Aproveitamento, QtdAcertos)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
-function opinar(req, res) {
-    var Usuario = req.body.UsuarioServer
-    var avaliação = req.body.avaliaçãoServer
-
-    if (Usuario == undefined) {
-        res.status(400).send("Seu Usuário está undefined!");
-    }
-    else if (avaliação == undefined) {
-        res.status(400).send("Sua avaliação está undefined!");
-    }
-
-    quizModel.opinar(Usuario, avaliação)
-        .then(  
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar o cadastro! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
-
 function listar(req, res) {
-
     quizModel.listar()
-        .then(
-            function (resultado) {
-                res.status(200).json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar a busca Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+        .then(r => res.status(200).json(r))
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
+        });
 }
 
 function buscar(req, res) {
+    const id = req.params.id;
 
-    quizModel.buscar()
-        .then(
-            function (resultado) {
-                res.status(200).json(resultado);
+    if (!id) {
+        return res.status(400).json({ erro: "ID é obrigatório." });
+    }
+
+    quizModel.buscar(id)
+        .then(r => {
+            if (r.length === 0) {
+                return res.status(404).json({ erro: "Pergunta não encontrada." });
             }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao realizar a busca Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
+            res.status(200).json(r[0]);
+        })
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
+        });
 }
+
+function cadastrar(req, res) {
+    const { pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta } = req.body;
+
+    if (!pergunta) {
+        return res.status(400).json({ erro: "Pergunta é obrigatória." });
+    }
+
+    quizModel.cadastrar(pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta)
+        .then(r => res.status(201).json(r))
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
+        });
+}
+
+function salvarResultado(req, res) {
+    const { visitorID, acertos, totalPerguntas } = req.body;
+
+    if (!visitorID || acertos == null || totalPerguntas == null) {
+        return res.status(400).json({ erro: "visitorID, acertos e totalPerguntas são obrigatórios." });
+    }
+
+    quizModel.salvarResultado(visitorID, acertos, totalPerguntas)
+        .then(r => res.status(201).json(r))
+        .catch(e => {
+            console.error(e);
+            res.status(500).json(e);
+        });
+}
+
 module.exports = {
     listar,
+    buscar,
     cadastrar,
-    opinar,
-    buscar
-}
+    salvarResultado
+};
