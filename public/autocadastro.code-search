@@ -1,0 +1,39 @@
+# Query: autocadastro
+# ContextLines: 1
+
+13 results - 3 files
+
+public\index.html:
+  149  
+  150:   async function CadastroAuto() {
+  151  
+
+  156  
+  157:     fetch("/usuarios/CadastroAuto", {
+  158        method: "POST",
+
+  192  
+  193:   document.addEventListener("DOMContentLoaded", CadastroAuto);
+  194  
+
+src\controllers\CadastroAutoController.js:
+   1: var CadastroAutoModel = require("../models/CadastroAutoModel");
+   2  var usuarioModel = require("../models/usuarioModel");
+   3  
+   4: function CadastroAuto(req, res) {
+   5      var visitorID = req.body.visitorID; 
+
+  13  
+  14:     CadastroAutoModel.criarUsuario(codigoUsuario, senha, visitorID)
+  15          .then(() => {
+
+  29  module.exports = {
+  30:     CadastroAuto
+  31  };
+
+src\routes\usuarios.js:
+  14  // Variável para fazer o auto cadastro em cima do... VisitorID 
+  15: var CadastroAutoController = require("../controllers/CadastroAutoController");
+  16: router.post("/CadastroAuto", function (req, res) {
+  17:     CadastroAutoController.CadastroAuto(req, res);
+  18  });

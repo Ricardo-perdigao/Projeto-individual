@@ -1,13 +1,13 @@
 var database = require("../database/config");
 
-function garantirVisitante(visitorID) {
-    var sql = `
+ function garantirVisitante(visitorID) {
+   var sql = `
         INSERT INTO visitante (visitorID)
         VALUES ('${visitorID}')
         ON DUPLICATE KEY UPDATE visitorID = visitorID;
     `;
     return database.executar(sql);
-}
+} 
 
 function desbloquear(visitorID, pagina) {
     return garantirVisitante(visitorID).then(() => {

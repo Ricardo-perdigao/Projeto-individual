@@ -1,20 +1,23 @@
 var database = require("../database/config");
 
-function autocadastrar(visitorID) {
-    var senha = 'visitante'
-    var sql = `
-        INSERT INTO usuario (visitorID, nome, senha, email)
-        VALUES (
-            '${visitorID}',
-            'visitante_${visitorID}',
-            '${senha}',
-            '${visitorID}'
-        )
-        ON DUPLICATE KEY UPDATE visitorID = VALUES(visitorID);
+async function autocadastrar(visitorID) {
+
+    var sqlCheck = `
+        SELECT * FROM visitante WHERE visitorID = '${visitorID}'
     `;
 
-    console.log("SQL autocadastro:", sql);
-    return database.executar(sql);
+    const result = await database.executar(sqlCheck);
+
+    if (result.length > 0) {
+        return result;
+    }
+
+    var sqlInsert = `
+        INSERT INTO visitante (visitorID) 
+        VALUES ('${visitorID}');
+    `;
+
+    return database.executar(sqlInsert);
 }
 
 module.exports = { autocadastrar };

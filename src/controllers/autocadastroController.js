@@ -3,6 +3,9 @@ var autocadastroModel = require("../models/autocadastroModel");
 function autocadastro(req, res) {
     var visitorID = req.body.visitorID;
 
+    console.log("hwdh" + req.body);
+    console.log("hw" + visitorID);
+
     if (!visitorID) {
         return res.status(400).json("visitorID ausente");
     }

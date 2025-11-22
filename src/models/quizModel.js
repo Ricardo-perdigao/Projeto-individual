@@ -34,9 +34,7 @@ function cadastrar(pergunta, imagem, alternativaA, alternativaB, alternativaC, a
 function garantirVisitante(visitorID) {
     var instrucao = `
         INSERT INTO visitante (visitorID)
-        VALUES ('${visitorID}')
-        ON DUPLICATE KEY UPDATE visitorID = visitorID;
-    `;
+        VALUES ('${visitorID}')    `;
     return database.executar(instrucao);
 }
 
