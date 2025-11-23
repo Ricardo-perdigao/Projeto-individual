@@ -10,7 +10,7 @@
 
 	create table progresso_visitante (
 	idprogresso int primary key auto_increment, 
-	idvisitante int not null,
+	idvisitante varchar(200) not null,
 	pagina varchar(50) not null,
 	desbloqueou int,
 	acessos int
@@ -39,7 +39,7 @@
 
 	CREATE TABLE quiz_resultado (
 	  idresultado INT PRIMARY KEY AUTO_INCREMENT,
-	  idvisitante INT NOT NULL,
+	  idvisitante varchar(200) NOT NULL,
 	  acertos INT,
 	  totalPerguntas INT,
 	  datacriacao DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -56,17 +56,13 @@
 		('Quais os principais ingredientes bannock?', './assets/imgs/bannock.jfif', 'aveia, gordura e ovo', 'farinha, aveia e ovo', 'aveia, farinha de cevada e agua', 'agua e farinha de cevada', 'alternativaC'),
 		('O que compunha a alimentação celta?', null, 'grãos, carnes e pescados', 'grãos, fungos, mel, leite e pescados', 'grãos, leite e ervas', 'grãos, caça e frutas', 'alternativaB');
 
-	ALTER TABLE progresso_visitante ADD UNIQUE INDEX idx_visitante_pagina (idvisitante, pagina);
-
 	select * from progresso_visitante;
 
 	select * from visitante;
 
 	select * from usuario;
 	  
-	select * from quiz_resultado;
+	select * from quiz_resultado;	
 
 	SELECT * FROM usuario;
 
-			
-	select * from visitante where visitorID like 'ed97192e%'
