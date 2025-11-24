@@ -17,22 +17,32 @@
         })
     });
 
-    function finalizarQuiz() {
-        let acertos = calcularAcertos();
-        let total = perguntas.length;
 
-        fetch("/quiz/salvarResultado", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                visitorID: VISITOR_ID,
-                acertos: acertos,
-                totalPerguntas: total
-            })
-        });
+function finalizarQuiz() {
+    let acertos = pontuacaoFinal; 
+    let total = quantidadeDeQuestoes; 
 
-        mostrarResultadoNaTela();
-    }
+    console.log(`Enviando resultado: Visitante: ${VISITOR_ID}, Acertos: ${acertos}, Total: ${total}`);
+
+    fetch("/quiz/salvarResultado", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            visitorID: VISITOR_ID,
+            acertos: acertos,
+            totalPerguntas: total
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            console.error("Erro ao salvar resultado do quiz:", response.status);
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error("Erro na requisição FETCH para salvar resultado:", error);
+    });
+}
 
 
     // Função para puxar as perguntas do banco (que ainda está cagada) -- FUNÇÃO QUE FAZ TUDO FUNCIONAR NA TEORIA   
@@ -206,7 +216,7 @@
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
+        
         if (porcentagemFinalDeAcertos <= 0.3) {
             textoParaMensagemFinal = "Parece que você não estudou..."
             classComCoresParaMensagemFinal = "text-danger-with-bg"
@@ -233,4 +243,6 @@
         btnSubmeter.disabled = true
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
+    
+        finalizarQuiz()
     }

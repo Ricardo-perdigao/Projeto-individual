@@ -34,7 +34,9 @@ function cadastrar(pergunta, imagem, alternativaA, alternativaB, alternativaC, a
 function garantirVisitante(visitorID) {
     var instrucao = `
         INSERT INTO visitante (visitorID)
-        VALUES ('${visitorID}')    `;
+        VALUES ('${visitorID}')
+        ON DUPLICATE KEY UPDATE visitorID = visitorID; 
+    `; 
     return database.executar(instrucao);
 }
 
@@ -42,6 +44,7 @@ function salvarResultado(visitorID, acertos, totalPerguntas) {
     console.log("Executando quizModel.salvarResultado()");
     return garantirVisitante(visitorID)
     .then(() => {
+        console.log("SUCESSO: Visitante garantido. Prosseguindo para inserção do resultado do quiz...");
         var instrucao = `
             INSERT INTO quiz_resultado (idVisitante, acertos, totalPerguntas)
             SELECT idVisitante, ${acertos}, ${totalPerguntas}

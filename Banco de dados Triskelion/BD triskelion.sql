@@ -1,5 +1,5 @@
-	use triskelion;
-	create database triskelion;
+create database triskelion;
+use triskelion;
 
 	create table visitante (
 	idvisitante int primary key auto_increment,
@@ -10,10 +10,13 @@
 
 	create table progresso_visitante (
 	idprogresso int primary key auto_increment, 
-	idvisitante varchar(200) not null,
+	-- CORREÇÃO: idvisitante deve ser INT e NOT NULL
+	idvisitante INT NOT NULL, 
 	pagina varchar(50) not null,
 	desbloqueou int,
 	acessos int
+	-- Opcional: Adicionar a Foreign Key
+    -- FOREIGN KEY (idvisitante) REFERENCES visitante(idvisitante)
 	);
 
 	create table usuario (
@@ -39,10 +42,12 @@
 
 	CREATE TABLE quiz_resultado (
 	  idresultado INT PRIMARY KEY AUTO_INCREMENT,
-	  idvisitante varchar(200) NOT NULL,
+	  idvisitante INT NOT NULL, 
 	  acertos INT,
 	  totalPerguntas INT,
 	  datacriacao DATETIME DEFAULT CURRENT_TIMESTAMP
+	  -- Opcional: Adicionar a Foreign Key
+      -- FOREIGN KEY (idvisitante) REFERENCES visitante(idvisitante)
 	);
 
 	insert into quiz (pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta) values
@@ -65,4 +70,39 @@
 	select * from quiz_resultado;	
 
 	SELECT * FROM usuario;
-
+            
+	 alter view vw_progresso_visitante as
+select
+    visitante.visitorID as 'Identificação do visitante',
+    SUM(progresso_visitante.acessos) as 'Paginas desbloqueadas',
+    visitante.datacriacao as 'Data do primeiro acesso'
+from
+    visitante
+join   
+	progresso_visitante on visitante.idvisitante = progresso_visitante.idvisitante
+group by   
+	visitante.visitorID,
+    visitante.datacriacao
+order by
+    visitante.datacriacao desc;
+    
+    select * from vw_progresso_visitante;
+    
+alter view vw_resultado_quiz as
+select
+    visitante.visitorID as 'Identificação do visitante',
+    SUM(quiz_resultado.acertos) as 'Total de acertos',
+    SUM(quiz_resultado.totalPerguntas) as 'Total de perguntas',
+    SUM(quiz_resultado.totalPerguntas) - SUM(quiz_resultado.acertos) as 'Erros',
+    if(SUM(quiz_resultado.totalPerguntas) is null or SUM(quiz_resultado.totalPerguntas) = 0, null, 
+       format((SUM(quiz_resultado.acertos) / SUM(quiz_resultado.totalPerguntas)) * 100, 2)) as 'Porcentagem de acertos'
+from
+    visitante 
+join
+    quiz_resultado on visitante.idvisitante = quiz_resultado.idvisitante
+group by
+    visitante.visitorID
+order by
+    'Porcentagem de acertos' desc;
+    
+    select * from vw_resultado_quiz;
