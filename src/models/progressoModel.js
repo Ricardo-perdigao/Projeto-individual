@@ -14,9 +14,7 @@ function desbloquear(visitorID, pagina) {
         var sql = `
             INSERT INTO progresso_visitante (idVisitante, pagina, desbloqueou)
             SELECT idVisitante, '${pagina}', 1
-            FROM visitante WHERE visitorID = '${visitorID}'
-            ON DUPLICATE KEY UPDATE desbloqueou = 1;
-        `;
+            FROM visitante WHERE visitorID = '${visitorID}'        `;
         return database.executar(sql);
     });
 }
@@ -26,9 +24,7 @@ function registrarAcesso(visitorID, pagina) {
         var sql = `
             INSERT INTO progresso_visitante (idVisitante, pagina, acessos)
             SELECT idVisitante, '${pagina}', 1
-            FROM visitante WHERE visitorID = '${visitorID}'
-            ON DUPLICATE KEY UPDATE acessos = acessos + 1;
-        `;
+            FROM visitante WHERE visitorID = '${visitorID}'`;
         return database.executar(sql);
     });
 }

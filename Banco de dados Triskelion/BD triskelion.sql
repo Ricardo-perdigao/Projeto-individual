@@ -106,3 +106,4 @@ order by
     'Porcentagem de acertos' desc;
     
     select * from vw_resultado_quiz;
+    
