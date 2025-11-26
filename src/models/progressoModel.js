@@ -24,7 +24,18 @@ function registrarAcesso(visitorID, pagina) {
         var sql = `
             INSERT INTO progresso_visitante (idVisitante, pagina, acessos)
             SELECT idVisitante, '${pagina}', 1
-            FROM visitante WHERE visitorID = '${visitorID}'`;
+            FROM visitante WHERE visitorID = '${visitorID}'`
+            // progressoModel.js
+function registrarAcesso(visitorID, pagina) {
+    return garantirVisitante(visitorID).then(() => {
+        var sql = `
+            INSERT INTO progresso_visitante (idProgresso, idVisitante, pagina, acessos)
+            SELECT idVisitante, '${pagina}', 1
+            FROM visitante WHERE visitorID = '${visitorID}'
+            ON DUPLICATE KEY UPDATE acessos = acessos + 1; `;
+        return database.executar(sql);
+    });
+};
         return database.executar(sql);
     });
 }

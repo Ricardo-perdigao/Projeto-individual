@@ -111,14 +111,22 @@ body {
 }
 
 .banner .video-bg {
-  position: absolute;
+  position: absolute; 
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: flex;          
+  justify-content: center;
+  align-items: center; 
+  overflow: hidden;
+}
+
+.banner .video-bg img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  z-index: -1;
-  filter: brightness(60%);
+  display: block;
 }
 
 .banner1 .video-bg {
@@ -130,6 +138,13 @@ body {
   object-fit: cover;
   z-index: -1;
   filter: brightness(60%);
+}
+
+.banner1 .video-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+  display: block;
 }
 
 .banner .container {

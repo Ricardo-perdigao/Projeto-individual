@@ -14,7 +14,7 @@
   <link rel="icon" href="./assets/icon/favicon2.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-
+<body data-pagina="index">
 <body>
   <div class="header">
     <div class="container">
@@ -50,9 +50,9 @@
     </div>
   </div>
   <div class="banner">
-    <video autoplay muted loop playsinline class="video-bg">
-      <source src="./assets/video/Home.mp4" type="video/mp4">
-    </video>
+    <div class="video-bg">
+      <img src="./assets/video/Home.gif" alt="inicio">
+    </div>
 
     <div class="container">
       <p>Bem vindo ao mundo celta 🌿</p>
@@ -191,16 +191,6 @@
   }
 
   document.addEventListener("DOMContentLoaded", autocadastro);
-
-
-  fetch("/progresso/acesso", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      visitorID: VISITOR_ID,
-      pagina: "misticismo"
-    })
-  });
 
   function desbloquear(pagina) {
     fetch("/progresso/desbloquear", {

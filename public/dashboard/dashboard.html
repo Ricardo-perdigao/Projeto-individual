@@ -139,12 +139,9 @@ function buscarDadosDashboard(idVisitante) {
         });
 }
 
-// Funções de Processamento e Limpeza
 function processarDadosDashboard(data) {
-    // Exibir JSON de detalhe
     document.getElementById('rawData').innerText = JSON.stringify(data, null, 2);
     
-    // Preenchimento dos KPIs
     document.getElementById('kpiAcertos').innerText = data.acertos;
     document.getElementById('kpiTotalPerguntas').innerText = data.totalPerguntas;
     document.getElementById('kpiTotalErros').innerText = data.totalErros;
@@ -152,14 +149,11 @@ function processarDadosDashboard(data) {
     document.getElementById('kpiTotalPaginasAcessadas').innerText = data.totalPaginasAcessadas;
     document.getElementById('kpiTotalPaginasDesbloqueadas').innerText = data.totalPaginasDesbloqueadas;
 
-    // Renderizar gráficos
     renderizarGraficoQuiz(data.acertos, data.totalErros);
     renderizarGraficoProgresso(data.paginas, data.acessos);
 }
 
-// FUNÇÃO CRÍTICA PARA RESOLVER O ERRO DE EMPILHAMENTO
 function limparDashboard() {
-    // Limpar KPIs (opcional, mas recomendado)
     document.getElementById('kpiAcertos').innerText = 0;
     document.getElementById('kpiTotalPerguntas').innerText = 0;
     document.getElementById('kpiTotalErros').innerText = 0;
@@ -167,22 +161,19 @@ function limparDashboard() {
     document.getElementById('kpiTotalPaginasAcessadas').innerText = 0;
     document.getElementById('kpiTotalPaginasDesbloqueadas').innerText = 0;
     
-    // CRÍTICO: Destruir as instâncias de gráfico para evitar o crescimento.
     if (quizChartInstance) {
         quizChartInstance.destroy();
-        quizChartInstance = null; // Resetar
+        quizChartInstance = null; 
     }
     if (progressChartInstance) {
         progressChartInstance.destroy();
-        progressChartInstance = null; // Resetar
+        progressChartInstance = null; 
     }
 }
 
 
-// Funções de Renderização (Com Destruição Garantida dentro de cada uma)
 
 function renderizarGraficoQuiz(acertos, totalErros) {
-    // Destruição redundante e garantida
     if (quizChartInstance) {
         quizChartInstance.destroy();
         quizChartInstance = null; 
@@ -191,7 +182,6 @@ function renderizarGraficoQuiz(acertos, totalErros) {
     const ctx = document.getElementById('quizChart').getContext('2d');
     
     if (acertos + totalErros === 0) {
-        // ... (lógica de "Sem dados")
         return;
     }
 
@@ -205,12 +195,10 @@ function renderizarGraficoQuiz(acertos, totalErros) {
                 hoverOffset: 4
             }]
         },
-        // ... (options)
     });
 }
 
 function renderizarGraficoProgresso(labels, data) {
-    // Destruição redundante e garantida
     if (progressChartInstance) {
         progressChartInstance.destroy();
         progressChartInstance = null; 
@@ -219,7 +207,6 @@ function renderizarGraficoProgresso(labels, data) {
     const ctx = document.getElementById('progressChart').getContext('2d');
     
     if (data.length === 0) {
-        // ... (lógica de "Sem dados")
         return;
     }
 
@@ -235,7 +222,6 @@ function renderizarGraficoProgresso(labels, data) {
                 borderWidth: 1
             }]
         },
-        // ... (options)
     });
 }
 </script>

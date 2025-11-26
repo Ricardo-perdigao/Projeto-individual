@@ -14,7 +14,7 @@
   <link rel="icon" href="./assets/icon/favicon2.ico" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
-
+<body data-pagina="literatura">
 <body onload="listar()">
   <!--header inicio-->
   <div class="header">
@@ -189,15 +189,6 @@
     sessionStorage.setItem("loginDesbloqueado", "true")
     navbar()
   }
-
-  fetch("/progresso/acesso", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      visitorID: VISITOR_ID,
-      pagina: "misticismo"
-    })
-  });
 </script>
 <script src="./js/navbar.js"></script>
 

@@ -18,13 +18,23 @@ function navbar() {
 
     itens.forEach(item => {
         const elemento = document.getElementById(item);
-        if (!elemento) return; 
+        if (!elemento) return;
 
         if (sessionStorage.getItem(`${item}Desbloqueado`) === "true") {
             elemento.style.display = "block";
         } else {
             elemento.style.display = "none";
         }
+    });
+
+    const pagina = document.body.dataset.pagina;
+    fetch("/progresso/acesso", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            visitorID: VISITOR_ID,
+            pagina: pagina
+        })
     });
 }
 

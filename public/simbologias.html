@@ -15,6 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
+<body data-pagina="simbologias">
 <body>
 
   <!--header inicio-->
@@ -177,15 +178,6 @@
     sessionStorage.setItem("gastronomiaDesbloqueado", "true");
     navbar()
   }
-
-  fetch("/progresso/acesso", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      visitorID: VISITOR_ID,
-      pagina: "misticismo"
-    })
-  });
 </script>
 <script src="./js/navbar.js"></script>
 
