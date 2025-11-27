@@ -29,13 +29,13 @@ function fetchAndRespond(idVisitante, res) {
             `;
 
             var instrucaoProgresso = `
-    SELECT 
-        pagina, 
-        acessos, 
-        desbloqueou
-    FROM progresso_visitante
-    WHERE idVisitante = ${idVisitante}
-    ORDER BY pagina;
+             SELECT 
+                pagina, 
+                acessos, 
+                desbloqueou
+            FROM progresso_visitante
+            WHERE idVisitante = ${idVisitante}
+            ORDER BY pagina;
 `;
 
             Promise.all([

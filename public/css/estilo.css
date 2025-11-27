@@ -187,6 +187,10 @@ body {
   line-height: 1.6;
 }
 
+.ritual-box a {
+  text-decoration: none;
+}
+
 .ritual-box h2 {
   color: var(--ouro);
   font-size: 1.8rem;
@@ -1101,4 +1105,271 @@ canvas {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+/* ------------------------------------------------------- */
+.kpicard1 h4, .kpicard2 h4, .kpicard3 h4, .kpicard4 h4 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: var(--ouro);
+    border-bottom: 1px solid rgba(201, 163, 74, 0.5);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+#kpiAcertos, #kpiTotalErros, #kpiPorcentagemAcerto, #kpiTotalPaginasDesbloqueadas, #kpiTotalPerguntas, #kpiTotalPaginasAcessadas {
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: block;
+    margin: 5px 0;
+}
+
+#kpiAcertos, 
+#kpiTotalPerguntas, 
+#kpiTotalPaginasDesbloqueadas, 
+#kpiTotalPaginasAcessadas {
+    display: inline-block !important;
+    width: auto !important;
+    margin: 0 5px; 
+    vertical-align: middle;
+}
+
+.kpicard1 { border: 2px solid var(--folha); }
+.kpicard2 { border: 2px solid var(--corQueAMinhaNamoradaEscolheu); }
+.kpicard3 { border: 2px solid var(--ouro); }
+.kpicard4 { border: 2px solid var(--nevoa); }
+
+#kpiAcertos { color: var(--folha); }
+#kpiTotalErros { color: var(--terra); }
+#kpiPorcentagemAcerto { color: var(--ouro); }
+
+#kpiTotalPaginasDesbloqueadas, #kpiTotalPaginasAcessadas, #kpiTotalPerguntas {
+    font-size: 1.8rem;
+    display: inline-block;
+}
+.kpicard1 span, .kpicard4 span {
+    font-size: 1rem;
+    font-weight: normal;
+    display: inline;
+}
+
+.kpicard1, .kpicard4 {
+    flex-direction: row !important; 
+    flex-wrap: wrap !important;     
+    align-content: center;          
+    align-items: center;
+    font-size: 24px;
+    color: var(--nevoa);
+}
+.kpicard1 #kpiAcertos, .kpicard1 #kpiTotalPerguntas {
+    font-size: 2.5rem;
+}
+
+.consulta-admin {
+    width: 100%;
+    max-width: 100%; 
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--noite);
+    border: 2px solid var(--ouro);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.consulta-admin h2 {
+    color: var(--ouro);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--folha);
+    padding-bottom: 10px;
+}
+
+.consulta-admin label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--folha);
+}
+
+#idVisitanteInput {
+    width: 70%;
+    max-width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid var(--musgo);
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--corQueAMinhaNamoradaEscolheu);
+    color: var(--noite);
+    font-size: 1rem;
+    font-family: 'Barlow', sans-serif;
+}
+
+#idVisitanteInput::placeholder {
+    color: rgba(15, 23, 32, 0.7);
+}
+
+.consulta-admin button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--noite);
+    background-color: var(--ouro);
+    width: 150px;
+    height: 40px;
+}
+
+.pai {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    max-width: 1400px;
+    margin: 30px auto;
+}
+
+.pai .container h1 {
+    text-align: center;
+    color: var(--ouro);
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px; 
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.dashboard-title {
+    color: var(--ouro);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--musgo);
+    padding-bottom: 10px;
+}
+
+.dashboard-area .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+.kpicard1, .kpicard2, .kpicard3, .kpicard4 {
+    width: 100%;            
+    height: 160px;           
+    padding: 10px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     
+    justify-content: center; 
+    text-align: center;
+    background-color: rgba(15, 23, 32, 0.8); 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.kpicard1 h4, .kpicard2 h4, .kpicard3 h4, .kpicard4 h4 {
+    font-size: 16px;       
+    margin: 0 0 10px 0;    
+    border-bottom: 1px solid rgba(201, 163, 74, 0.3);
+    padding-bottom: 5px;
+    width: 90%;            
+    height: 40px;          
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#kpiAcertos, #kpiTotalErros, #kpiPorcentagemAcerto {
+    font-size: 2.5rem;
+    font-weight: 900;
+    display: block;
+    margin: 5px 0;
+}
+
+#kpiTotalPaginasDesbloqueadas, #kpiTotalPaginasAcessadas, #kpiTotalPerguntas {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    margin: 0;
+}
+
+.kpicard1 span, .kpicard4 span {
+    font-size: 1rem;
+    font-weight: normal;
+    display: inline;
+}
+
+.kpicard1 { border: 2px solid var(--folha); }
+.kpicard2 { border: 2px solid var(--musgo); }
+.kpicard3 { border: 2px solid var(--ouro); }
+.kpicard4 { border: 2px solid var(--nevoa); }
+#kpiAcertos { color: var(--folha); }
+#kpiTotalErros { color: var(--terra); }
+#kpiPorcentagemAcerto { color: var(--ouro); }
+
+
+.kpicard1 h4, .kpicard4 h4 {
+    width: 100%;
+    margin-bottom: 5px;
+    flex-basis: 100%;
+}
+
+.charts-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 10px;
+    background-color: transparent;
+}
+
+.chart-box {
+    height: 350px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-box h3 {
+    color: var(--folha);
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed var(--ouro);
+}
+
+canvas {
+    max-width: 100%;
+    height: auto ;
+}
+
+.pai {
+  width: 90%; 
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    color: var(--nevoa);
+}
+
+.pai .container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    align-items: stretch;
 }

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triskelion | Dashboards</title>
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -24,205 +24,194 @@
 </head>
 
 <body>
-<div>
-    <h2>Consulta Administrativa de Visitante</h2>
-    <label for="idVisitanteInput">ID do Visitante Alvo (idvisitante):</label>
-    <input type="number" id="idVisitanteInput" placeholder="Ex: 1, 2, 3...">
-    <button onclick="carregarDashboard()">Buscar Dados</button>
-</div>
-
-<div class="container">
-    <h1>Dashboard Visitante</h1>
-
-    <section class="kpi-group">
-        <div class="kpi-card">
-            <h4>🎯 Acertos no Quiz</h4>
-            <span id="kpiAcertos">0</span> / <span id="kpiTotalPerguntas">0</span>
-        </div>
-        <div class="kpi-card">
-            <h4>❌ Total de Erros</h4>
-            <span id="kpiTotalErros">0</span>
-        </div>
-        <div class="kpi-card">
-            <h4>✅ % de Acerto</h4>
-            <span id="kpiPorcentagemAcerto">0.00%</span>
-        </div>
-        <div class="kpi-card">
-            <h4>🔓 Páginas Desbloqueadas</h4>
-            <span id="kpiTotalPaginasDesbloqueadas">0</span> / <span id="kpiTotalPaginasAcessadas">0</span>
-        </div>
-    </section>
-    <section>
-        <div>
-            <h3>Quiz — Acertos vs Erros</h3>
-            <canvas id="quizChart"></canvas> 
+    <div class="pai">   
+        <div class="consulta-admin">
+                <h2>Consulta do Visitante</h2>
+            <input type="number" id="idVisitanteInput" placeholder="Ex: 1, 2, 3...">
+            <button onclick="carregarDashboard()">Buscar Dados</button>
         </div>
 
-        <div>
-            <h3>Progresso — Acessos por página</h3>
-            <canvas id="progressChart"></canvas>
-        </div>
-    </section>
+        <div class="container">
+            <div class="kpis">
+                <div class="kpicard1">
+                    <h4>🎯 Acertos no Quiz</h4>
+                    <span id="kpiAcertos">0</span> / <span id="kpiTotalPerguntas">0</span>
+                </div>
+                <div class="kpicard2">
+                    <h4>❌ Total de Erros</h4>
+                    <span id="kpiTotalErros">0</span>
+                </div>
+                <div class="kpicard3">
+                    <h4>✅ % de Acerto</h4>
+                    <span id="kpiPorcentagemAcerto">0.00%</span>
+                </div>
+                <div class="kpicard4">
+                    <h4>🔓 Páginas Desbloqueadas</h4>
+                    <span id="kpiTotalPaginasAcessadas">0</span>
+                </div>
+            </div>
+            <div class="charts-group">
+                <div class="chart-box">
+                    <h3>Quiz — Acertos vs Erros</h3>
+                    <canvas id="quizChart"></canvas>
+                </div>
 
-    <section>
-        <h3>Detalhes (JSON)</h3>
-        <pre id="rawData">
-            Insira o ID de um visitante e clique em "Buscar Dados".
-        </pre>
-    </section>
-</div>
+                <div class="chart-box">
+                    <h3>Progresso — Acessos por página</h3>
+                    <canvas id="progressChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
-let quizChartInstance = null; 
-let progressChartInstance = null; 
+    let quizChartInstance = null;
+    let progressChartInstance = null;
 
-window.onload = buscarUltimoVisitante;
+    window.onload = buscarUltimoVisitante;
 
-function buscarUltimoVisitante() {
-    document.getElementById('rawData').innerText = "Carregando dados do último visitante...";
-    limparDashboard(); 
+    function buscarUltimoVisitante() {
+        console.log("Carregando dados do último visitante...");
+        limparDashboard();
 
-    fetch(`/dashboard/ultimo`) 
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            if (response.status === 404) {
-                 throw new Error("Nenhum visitante encontrado no banco de dados.");
-            }
-            throw new Error(`Erro na API: Status ${response.status}.`);
-        })
-        .then(data => {
-            if (data.idVisitante) {
-                document.getElementById('idVisitanteInput').value = data.idVisitante;
-            }
-            processarDadosDashboard(data);
-        })
-        .catch(error => {
-            console.error('Falha ao carregar a dashboard:', error);
-            document.getElementById('rawData').innerText = `Erro: ${error.message}.`;
-            limparDashboard();
+        fetch(`/dashboard/ultimo`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                if (response.status === 404) {
+                    throw new Error("Nenhum visitante encontrado no banco de dados.");
+                }
+                throw new Error(`Erro na API: Status ${response.status}.`);
+            })
+            .then(data => {
+                if (data.idVisitante) {
+                    document.getElementById('idVisitanteInput').value = data.idVisitante;
+                }
+                processarDadosDashboard(data);
+            })
+            .catch(error => {
+                console.error('Falha ao carregar a dashboard:', error);
+                console.error(`Erro: ${error.message}.`);
+                limparDashboard();
+            });
+    }
+
+    function carregarDashboard() {
+        const idVisitanteAlvo = document.getElementById('idVisitanteInput').value;
+
+        if (!idVisitanteAlvo || isNaN(idVisitanteAlvo) || Number(idVisitanteAlvo) <= 0) {
+            alert("Por favor, insira um ID de Visitante numérico válido e positivo para buscar.");
+            return;
+        }
+        limparDashboard();
+        buscarDadosDashboard(idVisitanteAlvo);
+    }
+
+    function buscarDadosDashboard(idVisitante) {
+       console.log(`Carregando dados do Visitante ID ${idVisitante}...`);
+
+        fetch(`/dashboard/dados/${idVisitante}`)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                }
+                if (response.status === 404) {
+                    throw new Error(`ID ${idVisitante} não encontrado.`);
+                }
+                throw new Error(`Erro na API: Status ${response.status}.`);
+            })
+            .then(data => {
+                processarDadosDashboard(data);
+            })
+            .catch(error => {
+                console.error('Falha ao carregar a dashboard:', error);
+                console.error(`Erro: ${error.message}.`);
+                limparDashboard();
+            });
+    }
+
+    function processarDadosDashboard(data) {
+        console.log("JSON recebido:", data)
+
+        document.getElementById('kpiAcertos').innerText = data.acertos;
+        document.getElementById('kpiTotalPerguntas').innerText = data.totalPerguntas;
+        document.getElementById('kpiTotalErros').innerText = data.totalErros;
+        document.getElementById('kpiPorcentagemAcerto').innerText = `${data.porcentagemAcerto}%`;
+        document.getElementById('kpiTotalPaginasAcessadas').innerText = data.totalPaginasAcessadas;
+        renderizarGraficoQuiz(data.acertos, data.totalErros);
+        renderizarGraficoProgresso(data.paginas, data.acessos);
+    }
+
+    function limparDashboard() {
+        document.getElementById('kpiAcertos').innerText = 0;
+        document.getElementById('kpiTotalPerguntas').innerText = 0;
+        document.getElementById('kpiTotalErros').innerText = 0;
+        document.getElementById('kpiPorcentagemAcerto').innerText = `0.00%`;
+        document.getElementById('kpiTotalPaginasAcessadas').innerText = 0;
+
+        if (quizChartInstance) {
+            quizChartInstance.destroy();
+            quizChartInstance = null;
+        }
+        if (progressChartInstance) {
+            progressChartInstance.destroy();
+            progressChartInstance = null;
+        }
+    }
+
+
+
+    function renderizarGraficoQuiz(acertos, totalErros) {
+        if (quizChartInstance) {
+            quizChartInstance.destroy();
+            quizChartInstance = null;
+        }
+
+        const ctx = document.getElementById('quizChart').getContext('2d');
+
+        if (acertos + totalErros === 0) {
+            return;
+        }
+
+        quizChartInstance = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Acertos', 'Erros'],
+                datasets: [{
+                    data: [acertos, totalErros],
+                    backgroundColor: ['#4BC0C0', '#FF6384'],
+                }]
+            },
         });
-}
-
-function carregarDashboard() {
-    const idVisitanteAlvo = document.getElementById('idVisitanteInput').value;
-
-    if (!idVisitanteAlvo || isNaN(idVisitanteAlvo) || Number(idVisitanteAlvo) <= 0) {
-        alert("Por favor, insira um ID de Visitante numérico válido e positivo para buscar.");
-        return;
     }
-    limparDashboard();
-    buscarDadosDashboard(idVisitanteAlvo);
-}
 
-function buscarDadosDashboard(idVisitante) {
-    document.getElementById('rawData').innerText = `Carregando dados do Visitante ID ${idVisitante}...`;
+    function renderizarGraficoProgresso(labels, data) {
+        if (progressChartInstance) {
+            progressChartInstance.destroy();
+            progressChartInstance = null;
+        }
 
-    fetch(`/dashboard/dados/${idVisitante}`) 
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            if (response.status === 404) {
-                 throw new Error(`ID ${idVisitante} não encontrado.`);
-            }
-            throw new Error(`Erro na API: Status ${response.status}.`);
-        })
-        .then(data => {
-            processarDadosDashboard(data);
-        })
-        .catch(error => {
-            console.error('Falha ao carregar a dashboard:', error);
-            document.getElementById('rawData').innerText = `Erro: ${error.message}.`;
-            limparDashboard();
+        const ctx = document.getElementById('progressChart').getContext('2d');
+
+        if (data.length === 0) {
+            return;
+        }
+
+        progressChartInstance = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Paginas desbloqueadas',
+                    data: data,
+                    backgroundColor: '#C9A34A',
+                    borderColor: '#8CBF66',
+                    borderWidth: 1
+                }]
+            },
         });
-}
-
-function processarDadosDashboard(data) {
-    document.getElementById('rawData').innerText = JSON.stringify(data, null, 2);
-    
-    document.getElementById('kpiAcertos').innerText = data.acertos;
-    document.getElementById('kpiTotalPerguntas').innerText = data.totalPerguntas;
-    document.getElementById('kpiTotalErros').innerText = data.totalErros;
-    document.getElementById('kpiPorcentagemAcerto').innerText = `${data.porcentagemAcerto}%`;
-    document.getElementById('kpiTotalPaginasAcessadas').innerText = data.totalPaginasAcessadas;
-    document.getElementById('kpiTotalPaginasDesbloqueadas').innerText = data.totalPaginasDesbloqueadas;
-
-    renderizarGraficoQuiz(data.acertos, data.totalErros);
-    renderizarGraficoProgresso(data.paginas, data.acessos);
-}
-
-function limparDashboard() {
-    document.getElementById('kpiAcertos').innerText = 0;
-    document.getElementById('kpiTotalPerguntas').innerText = 0;
-    document.getElementById('kpiTotalErros').innerText = 0;
-    document.getElementById('kpiPorcentagemAcerto').innerText = `0.00%`;
-    document.getElementById('kpiTotalPaginasAcessadas').innerText = 0;
-    document.getElementById('kpiTotalPaginasDesbloqueadas').innerText = 0;
-    
-    if (quizChartInstance) {
-        quizChartInstance.destroy();
-        quizChartInstance = null; 
     }
-    if (progressChartInstance) {
-        progressChartInstance.destroy();
-        progressChartInstance = null; 
-    }
-}
-
-
-
-function renderizarGraficoQuiz(acertos, totalErros) {
-    if (quizChartInstance) {
-        quizChartInstance.destroy();
-        quizChartInstance = null; 
-    }
-
-    const ctx = document.getElementById('quizChart').getContext('2d');
-    
-    if (acertos + totalErros === 0) {
-        return;
-    }
-
-    quizChartInstance = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Acertos', 'Erros'],
-            datasets: [{
-                data: [acertos, totalErros],
-                backgroundColor: ['#4BC0C0', '#FF6384'],
-                hoverOffset: 4
-            }]
-        },
-    });
-}
-
-function renderizarGraficoProgresso(labels, data) {
-    if (progressChartInstance) {
-        progressChartInstance.destroy();
-        progressChartInstance = null; 
-    }
-
-    const ctx = document.getElementById('progressChart').getContext('2d');
-    
-    if (data.length === 0) {
-        return;
-    }
-
-    progressChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Total de Acessos',
-                data: data,
-                backgroundColor: 'rgba(75, 192, 192, 0.7)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-    });
-}
 </script>
+
 </html>

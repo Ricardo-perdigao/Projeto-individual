@@ -1,5 +1,5 @@
 if (!sessionStorage.VISITOR_ID) {
-    sessionStorage.VISITOR_ID = Math.random() * 10000000000000000;
+    sessionStorage.VISITOR_ID = Math.random() * 100000000000000000;
 }
 
 const VISITOR_ID = sessionStorage.VISITOR_ID;
