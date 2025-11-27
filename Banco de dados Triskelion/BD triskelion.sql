@@ -7,16 +7,14 @@ use triskelion;
 	senha varchar(50),
 	datacriacao datetime default current_timestamp
 	);
-
+    
 	create table progresso_visitante (
-	idprogresso int primary key auto_increment, 
-	-- CORREÇÃO: idvisitante deve ser INT e NOT NULL
+	idprogresso int, 
 	idvisitante INT NOT NULL, 
 	pagina varchar(50) not null,
 	desbloqueou int,
-	acessos int
-	-- Opcional: Adicionar a Foreign Key
-    -- FOREIGN KEY (idvisitante) REFERENCES visitante(idvisitante)
+	acessos int,
+    primary key (idvisitante, pagina)
 	);
 
 	create table usuario (
@@ -46,8 +44,6 @@ use triskelion;
 	  acertos INT,
 	  totalPerguntas INT,
 	  datacriacao DATETIME DEFAULT CURRENT_TIMESTAMP
-	  -- Opcional: Adicionar a Foreign Key
-      -- FOREIGN KEY (idvisitante) REFERENCES visitante(idvisitante)
 	);
 
 	insert into quiz (pergunta, imagem, alternativaA, alternativaB, alternativaC, alternativaD, alternativaCorreta) values
@@ -59,9 +55,9 @@ use triskelion;
 		('Quais os principais ingredientes do hidromel?', '/assets/imgs/hidromel.png', 'Mel, água e leveduras', 'Mel, água e álcool', 'água, açúcar e álcool', 'água, mel e açúcar', 'alternativaA'),
 		('Quais os principais ingredientes bolo de maçã celta?', './assets/imgs/bolo.jfif', 'maçã, ovo, leite e farinha', 'farinha, aveia e maçã', 'maçã, aveia, farinha e ovo', 'aveia, farinha, maçã e mel', 'alternativaD'),
 		('Quais os principais ingredientes bannock?', './assets/imgs/bannock.jfif', 'aveia, gordura e ovo', 'farinha, aveia e ovo', 'aveia, farinha de cevada e agua', 'agua e farinha de cevada', 'alternativaC'),
-		('O que compunha a alimentação celta?', null, 'grãos, carnes e pescados', 'grãos, fungos, mel, leite e pescados', 'grãos, leite e ervas', 'grãos, caça e frutas', 'alternativaB');
+		('O que compunha a alimentação celta?', null, 'grãos, carnes e pescados', 'grãos, cogumelos, mel, leite e pescados', 'grãos, leite e ervas', 'grãos, caça e frutas', 'alternativaB');
 
-	select * from progresso_visitante;
+	select * from progresso_visitante order by idvisitante desc;
 
 	select * from visitante;
 
@@ -90,6 +86,7 @@ order by
     
 alter view vw_resultado_quiz as
 select
+	visitante.datacriacao as 'Data de criação do ID',
     visitante.visitorID as 'Identificação do visitante',
     SUM(quiz_resultado.acertos) as 'Total de acertos',
     SUM(quiz_resultado.totalPerguntas) as 'Total de perguntas',
@@ -105,5 +102,5 @@ group by
 order by
     'Porcentagem de acertos' desc;
     
-    select * from vw_resultado_quiz;
+    select * from vw_resultado_quiz order by visitante.datacriacao desc;
     
