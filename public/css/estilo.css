@@ -16,8 +16,6 @@ body {
   padding-top: var(--tamanho-header);
 }
 
-
-
 :root {
   --tamanho-header: 80px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
@@ -33,6 +31,7 @@ body {
   --corQueAMinhaNamoradaEscolheu: #8c8c8c;
 }
 
+/* alterações no html das páginas*/
 .container {
   display: flex;
   width: 80%;
@@ -46,9 +45,9 @@ body {
   background-color: var(--noite);
   border-bottom: 2px solid;
   position: fixed;
-  top: 0;       
-  left: 0;          
-  width: 100%;      
+  top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -95,7 +94,7 @@ body {
   margin: 0;
 }
 
-/* BANNER */
+/* Definição do meu banner inicial do index*/
 .banner {
   position: relative;
   height: var(--tamanho-banner);
@@ -117,14 +116,14 @@ body {
 }
 
 .banner .video-bg {
-  position: absolute; 
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;          
+  display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   overflow: hidden;
 }
 
@@ -149,7 +148,7 @@ body {
 .banner1 .video-bg img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   
+  object-fit: cover;
   display: block;
 }
 
@@ -186,10 +185,10 @@ body {
 .ritual-box {
   background-color: var(--noite);
   color: var(--nevoa);
-   border: 2px solid var(--ouro);
+  border: 2px solid var(--ouro);
   padding: 2rem;
   border-radius: 20px;
-  max-width: 700px;
+  max-width: 800px;
   line-height: 1.6;
 }
 
@@ -278,8 +277,6 @@ body {
   }
 }
 
-/* MISSÃO VISÃO VALORES */
-
 .social {
   padding: 60px 0;
 }
@@ -306,10 +303,83 @@ body {
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(15, 23, 32, 0.4);
-  max-width: 700px;
+  max-width: 800px;
   line-height: 1.6;
 }
 
+/*CSS para imagem da pagina Misticismo (pelo amor de deus se você tocar a imagem explode)*/
+/*Consegui mexer e não fuder o resto da imagem, mas ainda tá pixelizada */
+.misticismo {
+  position: relative;
+  width: 98%;
+  min-height: 100vh;
+  background-image: url('../assets/imgs/fundo2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+}
+
+/* O mesmo para a acima, mas para a página simbologias*/
+/* após trocar as imagens, deu um pouco mais certo*/
+.Simbologias {
+  position: relative;
+  width: 98%;
+  min-height: 100vh;
+  background-image: url('../assets/imgs/Simbologias.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+}
+
+.literatura {
+  position: relative;
+  width: 98%;
+  min-height: 100%;
+  background-image: url('../assets/imgs/fadas.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+}
+
+.gastronomia {
+  position: relative;
+  width: 98%;
+  min-height: 100%;
+  background-image: url('../assets/imgs/gastronomia1.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: var(--nevoa);
+  display: flex;
+}
+
+
+/* FOOTER */
+
+.footer {
+  background-color: var(--noite);
+  height: 150px;
+  color: #fff;
+  display: flex;
+  font-size: 15px;
+}
+
+.footer .container {
+  justify-content: center;
+  text-align: center;
+}
+
+.footer .container .version {
+  font-size: 12px;
+}
+
+/* Aqui já entra o quiz*/
 #pontuacao {
     display: flex;
     flex-direction: column;
@@ -372,7 +442,6 @@ body {
     display: block;
     border-radius: 8px;
 }
-
 
 #opcoes {
     display: grid;
@@ -450,77 +519,8 @@ body {
   margin: 0 auto 1rem auto;
 }
 
-/*CSS para imagem da pagina Misticismo (pelo amor de deus se você tocar a imagem explode)*/ /*Consegui mexer e não fuder o resto da imagem, mas ainda tá pixelizada */
-  .misticismo {
-    position: relative;
-    width: 98%;
-    min-height: 100vh;
-    background-image: url('../assets/imgs/fundo2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: var(--nevoa);
-    display: flex;
-  }
 
-.Simbologias {
-  position: relative;
-  width: 98%;
-  min-height: 100vh;
-  background-image: url('../assets/imgs/Simbologias.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: var(--nevoa);
-  display: flex;
-}
-
-.literatura {
-  position: relative;
-  width: 98%;
-  min-height: 100%;
-  background-image: url('../assets/imgs/fadas.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: var(--nevoa);
-  display: flex;
-}
-
-.gastronomia {
-  position: relative;
-  width: 98%;
-  min-height: 100%;
-  background-image: url('../assets/imgs/gastronomia1.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: var(--nevoa);
-  display: flex;
-}
-
-
-/* FOOTER */
-
-.footer {
-  background-color: var(--noite);
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
-
-/* LOGIN */
-
+/* Início do Login */
 
 .container {
   justify-content: flex-end;
@@ -529,9 +529,8 @@ body {
   display: flex;
 }
 
-
 .card {
-  height: var(--tamanho-login); 
+  height: var(--tamanho-login);
   width: 500px;
   border-radius: 10px;
   display: flex;
@@ -557,24 +556,8 @@ body {
   flex-direction: column;
 }
 
-.formulario span {
-  font-size: 15px;
-  font-weight: 800;
-}
-
 .formulario input {
-  border: 2px solid var(--ouro
-  );
-  text-align: center;
-  border-radius: 10px;
-  margin: 0;
-}
-
-.formulario select {
-  border: 2px solid #32b9cd;
-  background-color:var(--noite);
-  color: gray;
-  height: 36px;
+  border: 2px solid var(--ouro);
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -585,6 +568,7 @@ body {
   flex-direction: column;
   padding: 5px 0;
 }
+
 .campo input {
   background-color: var(--corQueAMinhaNamoradaEscolheu);
 }
@@ -598,58 +582,14 @@ body {
   font-size: 18px;
   color: var(--noite);
   background-color: var(--musgo);
-  width: 120px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
   align-self: center;
   margin-top: 20px;
 }
 
-.loading-div {
-  width: 50px;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
 #div_erros_login {
   display: none
-}
-
-/* FORMULARIO */
-
-.alerta_erro {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.card_erro {
-  display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
-  border-radius: 4px;
-  border: #ED145B 3px solid;
-  padding: 10px;
-  margin-right: 10%;
-}
-
-.card_erro #mensagem_erro {
-  font-weight: 500;
-  font-size: 20px;
-}
-
-.formulario .tipo_campo {
-  font-size: 20px;
-  font-weight: 600 !important;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
 }
 
 input {
@@ -660,786 +600,341 @@ input {
   border-radius: 10px;
 }
 
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #ED145B;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
-}
-
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-/* SIMULADOR */
-
-.simulador {
-  color: white;
-}
-
-.simulador .container {
-  flex-direction: column;
-  overflow: scroll;
-  height: var(--tamanho-simulador);
-}
-
-/* ALERTA */
-
-#alerta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
-.mensagem-alarme {
-  background-color: white;
-  border-radius: 5px;
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.mensagem-alarme h3 {
-  font-size: 14px;
-  margin: 0;
-}
-
-.mensagem-alarme .informacao {
-  width: 66%;
-}
-
-.alarme-sino {
-  width: 48px;
-  height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
-  animation-iteration-count: infinite;
-}
-
-@keyframes bell {
-  0% {
-    transform: rotate(25deg)
-  }
-
-  25% {
-    transform: rotate(-25deg)
-  }
-
-  50% {
-    transform: rotate(25deg)
-  }
-
-  75% {
-    transform: rotate(-25deg)
-  }
-
-  100% {
-    transform: rotate(25deg)
-  }
-}
-
-.label-captura {
-  display: flex;
-  justify-content: center;
-}
-
-.dash-right .avisos {
-  width: 100%;
-  color: rgb(216, 216, 216);
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.dash-right .avisos .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.dash-right .avisos .container .div-form {
-  width: 95%;
-}
-
-.dash-right .avisos .container .div-form #form_postagem {
-  width: 95%;
-}
-
-.dash-right .avisos .div-form label {
-  width: 95%;
-}
-
-.dash-right .avisos .div-form input {
-  width: 95%;
-  border-radius: 5px;
-}
-
-.dash-right .avisos .div-form textarea {
-  width: 95%;
-  border: 3px solid #e6005a;
-  background-color: white;
-  border-radius: 5px;
-}
-
-.dash-right .avisos .div-form button {
-  cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #e6005a;
-  width: 120px;
-}
-
-.publicacao-btn-editar {
-  cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 5px 8px;
-  color: white;
-  background-color: #e6005a;
-  width: 80px;
-}
-
-.publicacao {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: stretch;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  border-bottom: 3px solid #e6005a;
-  padding: 20px;
-}
-
-.publicacao>*:not(:last-child) {
-  padding: 0 0 10px 0;
-}
-
-.div-results {
-  width: 100%;
-}
-
-.div-results .feed-container {
-  background-color: #212124;
-  border-radius: 5px;
-  margin-bottom: 80px;
-}
-
-.div-buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.div-buttons>* {
-  margin-left: 30px;
-}
-
-/* pagina graficos */
-
-.dash-header {
-  background-color: #212124;
-}
-
-.dash {
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-color: #161618;
-  height: 100vh;
-  overflow: auto;
-}
-
-.area-parametros-alerta {
-  /* border: 2px solid pink; */
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: auto;
-  margin-top: 10px;
-  background-color: #212124;
-}
-
-.area-parametros-alerta .titulo-legenda {
-  color: white;
-  font-weight: 600;
-  width: fit-content;
-  margin: 10px 20px;
-}
-
-.parametros-alerta {
-  display: flex;
-  width: 100%;
-}
-
-.item-regua {
-  width: 20%;
-  text-align: center;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-}
-
-.item-regua p {
-  margin: 0;
-  font-weight: 500;
-}
-
-.item-regua p:nth-child(2) {
-  font-weight: 800;
-}
-
-.perigo-frio {
-  background-color: #5c6bc0;
-}
-
-.perigo-quente {
-  background-color: #ff7043;
-}
-
-.alerta-frio {
-  background-color: #42a5f5;
-}
-
-.alerta-quente {
-  background-color: #ffee58;
-}
-
-.ideal {
-  background-color: #9ccc65;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 450px;
-  width: 100%;
-  align-items: center;
-  color: white;
-}
-
-.card-aquario {
-  margin: 2%;
-  min-width: 40%;
-  max-width: 50%;
-  width: fit-content;
-  flex-wrap: wrap;
-  display: flex;
-  /* text-align: center; */
-  height: 180px;
-  /* justify-content: right; */
-  background-color: #212124;
-  font-size: 20px;
-}
-
-.card-aquario h1 {
-  width: fit-content;
-}
-
-.card-aquario p {
-  margin: 0;
-  font-size: 50px;
-  font-weight: lighter;
-  text-align: left;
-}
-
-.desc-aquario {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.desc-aquario .cor-alerta {
-  width: 30px;
-}
-
-.title-aquario {
-  width: 100%;
-}
-
-
-.cards h1 {
-  font-size: 22px;
-  border-bottom: solid white 1px;
-  text-align: left;
-  font-weight: lighter;
-  margin: 20px;
-}
-
-.temperatura,
-.umidade {
-  margin: 5px;
-  margin-left: 20px;
-  width: 75%;
-}
-
-.cor-alerta {
-  width: 13%;
-  height: 30%;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
-}
-
-.graph {
-  width: 70%;
-  margin: auto;
-  padding-top: 10px;
-}
-
-.tituloGraficos {
-  color: rgb(216, 216, 216);
-  display: flex;
-  justify-content: center;
-}
-
-.btn-chart {
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #e6005a;
-  background-color: white;
-  margin: 5px;
-  border-radius: 3px;
-  cursor: pointer
-}
-
-.btn-pink {
-  color: white;
-  background-color: #e6005a;
-}
-
-.btn-white {
-  color: #e6005a;
-  background-color: white;
-
-}
-
-.label-captura {
-  height: 80px;
-}
-
-.display-none {
-  display: none;
-}
-
-.display-flex {
-  display: flex;
-}
-
-.display-block {
-  display: block;
-}
-
 canvas {
   width: 100% !important;
   height: 100% !important;
 }
 
-/* PAGINA DOS GRÁFICOS 2023 */
-
-.janela {
-  display: flex;
-  width: 100vw; 
+/* ---------------------dashboard---------------------------------- */
+.kpicard1 h4,
+.kpicard2 h4,
+.kpicard3 h4,
+.kpicard4 h4 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: var(--ouro);
+  border-bottom: 1px solid rgba(201, 163, 74, 0.5);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.header-left a {
-  text-decoration: none;
-  color: white;
-}
-
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
-}
-
-.dash-right {
-  display: flex;
-  width: 70%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
-  top: 0;
-  left: 25%;
-  height: 100vh;
-  overflow: auto;
-}
-
-.header-left h1 {
-  color: #32b9cd;
-}
-
-.hello {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.hello h3 {
-  color: #e3b062;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-
-.hello h3 span {
-  font-weight: 800;
-}
-
-.btn-nav {
-  width: 40%;
-  color: white;
-  background-color: #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white {
-  width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white h3 {
-  color: #e6005a;
-  padding: 0;
-  margin: 0;
-}
-
-.btn-nav h3,
-.btn-logout h3 {
-  margin: 0;
-  padding: 0;
-}
-
-.btn-logout {
-  margin: 0;
-  padding: 0;
-  width: 20%;
-  background-color: #32b9cd;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px 15px;
-  margin-bottom: 100px;
-  cursor: pointer;
-}
-/* ------------------------------------------------------- */
-.kpicard1 h4, .kpicard2 h4, .kpicard3 h4, .kpicard4 h4 {
-    margin-top: 0;
-    font-size: 1.1rem;
-    color: var(--ouro);
-    border-bottom: 1px solid rgba(201, 163, 74, 0.5);
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-#kpiAcertos, #kpiTotalErros, #kpiPorcentagemAcerto, #kpiTotalPaginasDesbloqueadas, #kpiTotalPerguntas, #kpiTotalPaginasAcessadas {
-    font-size: 2.5rem;
-    font-weight: 900;
-    display: block;
-    margin: 5px 0;
-}
-
-#kpiAcertos, 
-#kpiTotalPerguntas, 
-#kpiTotalPaginasDesbloqueadas, 
+#kpiAcertos,
+#kpiTotalErros,
+#kpiPorcentagemAcerto,
+#kpiTotalPaginasDesbloqueadas,
+#kpiTotalPerguntas,
 #kpiTotalPaginasAcessadas {
-    display: inline-block !important;
-    width: auto !important;
-    margin: 0 5px; 
-    vertical-align: middle;
+  font-size: 2.5rem;
+  font-weight: 900;
+  display: block;
+  margin: 5px 0;
 }
 
-.kpicard1 { border: 2px solid var(--folha); }
-.kpicard2 { border: 2px solid var(--corQueAMinhaNamoradaEscolheu); }
-.kpicard3 { border: 2px solid var(--ouro); }
-.kpicard4 { border: 2px solid var(--nevoa); }
-
-#kpiAcertos { color: var(--folha); }
-#kpiTotalErros { color: var(--terra); }
-#kpiPorcentagemAcerto { color: var(--ouro); }
-
-#kpiTotalPaginasDesbloqueadas, #kpiTotalPaginasAcessadas, #kpiTotalPerguntas {
-    font-size: 1.8rem;
-    display: inline-block;
-}
-.kpicard1 span, .kpicard4 span {
-    font-size: 1rem;
-    font-weight: normal;
-    display: inline;
+#kpiAcertos,
+#kpiTotalPerguntas,
+#kpiTotalPaginasDesbloqueadas,
+#kpiTotalPaginasAcessadas {
+  display: inline-block !important;
+  width: auto !important;
+  margin: 0 5px;
+  vertical-align: middle;
 }
 
-.kpicard1, .kpicard4 {
-    flex-direction: row !important; 
-    flex-wrap: wrap !important;     
-    align-content: center;          
-    align-items: center;
-    font-size: 24px;
-    color: var(--nevoa);
+.kpicard1 {
+  border: 2px solid var(--folha);
 }
-.kpicard1 #kpiAcertos, .kpicard1 #kpiTotalPerguntas {
-    font-size: 2.5rem;
+
+.kpicard2 {
+  border: 2px solid var(--corQueAMinhaNamoradaEscolheu);
+}
+
+.kpicard3 {
+  border: 2px solid var(--ouro);
+}
+
+.kpicard4 {
+  border: 2px solid var(--nevoa);
+}
+
+#kpiAcertos {
+  color: var(--folha);
+}
+
+#kpiTotalErros {
+  color: var(--terra);
+}
+
+#kpiPorcentagemAcerto {
+  color: var(--ouro);
+}
+
+#kpiTotalPaginasDesbloqueadas,
+#kpiTotalPaginasAcessadas,
+#kpiTotalPerguntas {
+  font-size: 1.8rem;
+  display: inline-block;
+}
+
+.kpicard1 span,
+.kpicard4 span {
+  font-size: 1rem;
+  font-weight: normal;
+  display: inline;
+}
+
+.kpicard1,
+.kpicard4 {
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: var(--nevoa);
+}
+
+.kpicard1 #kpiAcertos,
+.kpicard1 #kpiTotalPerguntas {
+  font-size: 2.5rem;
 }
 
 .consulta-admin {
-    width: 100%;
-    max-width: 100%; 
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--noite);
-    border: 2px solid var(--ouro);
-    border-radius: 10px;
-    padding: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--noite);
+  border: 2px solid var(--ouro);
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .consulta-admin h2 {
-    color: var(--ouro);
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--folha);
-    padding-bottom: 10px;
+  color: var(--ouro);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--folha);
+  padding-bottom: 10px;
 }
 
 .consulta-admin label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--folha);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--folha);
 }
 
 #idVisitanteInput {
-    width: 70%;
-    max-width: 250px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 2px solid var(--musgo);
-    border-radius: 5px;
-    text-align: center;
-    background-color: var(--corQueAMinhaNamoradaEscolheu);
-    color: var(--noite);
-    font-size: 1rem;
-    font-family: 'Barlow', sans-serif;
+  width: 70%;
+  max-width: 250px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid var(--musgo);
+  border-radius: 5px;
+  text-align: center;
+  background-color: var(--corQueAMinhaNamoradaEscolheu);
+  color: var(--noite);
+  font-size: 1rem;
+  font-family: 'Barlow', sans-serif;
 }
 
 #idVisitanteInput::placeholder {
-    color: rgba(15, 23, 32, 0.7);
+  color: rgba(15, 23, 32, 0.7);
 }
 
 .consulta-admin button {
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--noite);
-    background-color: var(--ouro);
-    width: 150px;
-    height: 40px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--noite);
+  background-color: var(--ouro);
+  width: 150px;
+  height: 40px;
 }
 
 .pai {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 95%;
-    max-width: 1400px;
-    margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  max-width: 1400px;
+  margin: 30px auto;
 }
 
 .pai .container h1 {
-    text-align: center;
-    color: var(--ouro);
-    margin-bottom: 20px;
-    width: 100%;
+  text-align: center;
+  color: var(--ouro);
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .kpis {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px; 
-    width: 100%;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .dashboard-title {
-    color: var(--ouro);
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    border-bottom: 2px solid var(--musgo);
-    padding-bottom: 10px;
+  color: var(--ouro);
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  border-bottom: 2px solid var(--musgo);
+  padding-bottom: 10px;
 }
 
 .dashboard-area .kpis {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    width: 100%;
-    margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
 }
 
 
-.kpicard1, .kpicard2, .kpicard3, .kpicard4 {
-    width: 100%;            
-    height: 160px;           
-    padding: 10px;
-    border-radius: 12px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;     
-    justify-content: center; 
-    text-align: center;
-    background-color: rgba(15, 23, 32, 0.8); 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+.kpicard1,
+.kpicard2,
+.kpicard3,
+.kpicard4 {
+  width: 100%;
+  height: 160px;
+  padding: 10px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgba(15, 23, 32, 0.8);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.kpicard1 h4, .kpicard2 h4, .kpicard3 h4, .kpicard4 h4 {
-    font-size: 16px;       
-    margin: 0 0 10px 0;    
-    border-bottom: 1px solid rgba(201, 163, 74, 0.3);
-    padding-bottom: 5px;
-    width: 90%;            
-    height: 40px;          
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.kpicard1 h4,
+.kpicard2 h4,
+.kpicard3 h4,
+.kpicard4 h4 {
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  border-bottom: 1px solid rgba(201, 163, 74, 0.3);
+  padding-bottom: 5px;
+  width: 90%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#kpiAcertos, #kpiTotalErros, #kpiPorcentagemAcerto {
-    font-size: 2.5rem;
-    font-weight: 900;
-    display: block;
-    margin: 5px 0;
+#kpiAcertos,
+#kpiTotalErros,
+#kpiPorcentagemAcerto {
+  font-size: 2.5rem;
+  font-weight: 900;
+  display: block;
+  margin: 5px 0;
 }
 
-#kpiTotalPaginasDesbloqueadas, #kpiTotalPaginasAcessadas, #kpiTotalPerguntas {
-    font-size: 28px;
-    font-weight: 800;
-    line-height: 1;
-    margin: 0;
+#kpiTotalPaginasDesbloqueadas,
+#kpiTotalPaginasAcessadas,
+#kpiTotalPerguntas {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 0;
 }
 
-.kpicard1 span, .kpicard4 span {
-    font-size: 1rem;
-    font-weight: normal;
-    display: inline;
+.kpicard1 span,
+.kpicard4 span {
+  font-size: 1rem;
+  font-weight: normal;
+  display: inline;
 }
 
-.kpicard1 { border: 2px solid var(--folha); }
-.kpicard2 { border: 2px solid var(--musgo); }
-.kpicard3 { border: 2px solid var(--ouro); }
-.kpicard4 { border: 2px solid var(--nevoa); }
-#kpiAcertos { color: var(--folha); }
-#kpiTotalErros { color: var(--terra); }
-#kpiPorcentagemAcerto { color: var(--ouro); }
+.kpicard1 {
+  border: 2px solid var(--folha);
+}
+
+.kpicard2 {
+  border: 2px solid var(--musgo);
+}
+
+.kpicard3 {
+  border: 2px solid var(--ouro);
+}
+
+.kpicard4 {
+  border: 2px solid var(--nevoa);
+}
+
+#kpiAcertos {
+  color: var(--folha);
+}
+
+#kpiTotalErros {
+  color: var(--terra);
+}
+
+#kpiPorcentagemAcerto {
+  color: var(--ouro);
+}
 
 
-.kpicard1 h4, .kpicard4 h4 {
-    width: 100%;
-    margin-bottom: 5px;
-    flex-basis: 100%;
+.kpicard1 h4,
+.kpicard4 h4 {
+  width: 100%;
+  margin-bottom: 5px;
+  flex-basis: 100%;
 }
 
 .charts-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 10px;
-    background-color: transparent;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 10px;
+  background-color: transparent;
 }
 
 .chart-box {
-    height: 350px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .chart-box h3 {
-    color: var(--folha);
-    font-size: 1.3rem;
-    text-align: center;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 5px;
-    border-bottom: 1px dashed var(--ouro);
+  color: var(--folha);
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px dashed var(--ouro);
 }
 
 canvas {
-    max-width: 100%;
-    height: auto ;
+  max-width: 100%;
+  height: auto;
 }
 
 .pai {
-  width: 90%; 
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 20px;
-    color: var(--nevoa);
+  width: 90%;
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 20px;
+  color: var(--nevoa);
 }
 
 .pai .container {
-    display: flex;
-    flex-direction: column; 
-    width: 100%;
-    align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: stretch;
 }

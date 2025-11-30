@@ -67,7 +67,7 @@ use triskelion;
 
 	SELECT * FROM usuario;
             
-	 alter view vw_progresso_visitante as
+	 create view vw_progresso_visitante as
 select
     visitante.visitorID as 'Identificação do visitante',
     SUM(progresso_visitante.acessos) as 'Paginas desbloqueadas',
@@ -82,9 +82,10 @@ group by
 order by
     visitante.datacriacao desc;
     
-    select * from vw_progresso_visitante;
+select * from vw_progresso_visitante;
     
-alter view vw_resultado_quiz as
+    
+create view vw_resultado_quiz as
 select
 	visitante.datacriacao as 'Data de criação do ID',
     visitante.visitorID as 'Identificação do visitante',
@@ -102,5 +103,5 @@ group by
 order by
     'Porcentagem de acertos' desc;
     
-    select * from vw_resultado_quiz order by visitante.datacriacao desc;
+    select * from vw_resultado_quiz order by `Data de criação do ID` desc;
     

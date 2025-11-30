@@ -13,7 +13,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             visitorID: VISITOR_ID,
-            pagina: "misticismo"
+            pagina: "quiz"
         })
     });
 

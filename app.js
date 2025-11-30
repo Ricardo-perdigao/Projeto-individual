@@ -26,22 +26,12 @@ app.use(cors());
 var progressoRouter = require("./src/routes/progresso");
 var usuarioRouter = require("./src/routes/usuarios");
 var quizRouter = require("./src/routes/quiz");
-var medidasRouter = require("./src/routes/medidas");
-var aquariosRouter = require("./src/routes/aquarios");
-var empresasRouter = require("./src/routes/empresas");
-var avisosRouter = require("./src/routes/avisos");
 var dashboardRouter = require("./src/routes/dashboard");
-
-
 
 app.use(express.static("public"))
 app.use("/progresso", progressoRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/quiz", quizRouter);
-app.use("/medidas", medidasRouter);
-app.use("/aquarios", aquariosRouter);
-app.use("/empresas", empresasRouter);
-app.use("/avisos", avisosRouter);
 app.use("/dashboard", dashboardRouter);
 
 app.listen(PORTA_APP, function () {
