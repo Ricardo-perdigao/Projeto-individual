@@ -17,7 +17,6 @@ function fetchAndRespond(idVisitante, res) {
             }
 
             var idVisitanteReal = result[0].idvisitante;
-            var idVisitante = result[0].idvisitante;
             var visitorID = result[0].visitorID;
 
             var instrucaoQuiz = `
@@ -34,7 +33,7 @@ function fetchAndRespond(idVisitante, res) {
                 acessos, 
                 desbloqueou
             FROM progresso_visitante
-            WHERE idVisitante = ${idVisitante}
+            WHERE idVisitante = ${idVisitanteReal}
             ORDER BY pagina;
 `;
 
@@ -43,8 +42,8 @@ function fetchAndRespond(idVisitante, res) {
                 database.executar(instrucaoProgresso)
             ])
                 .then(([quizRows, progRows]) => {
-                    const acertos = quizRows[0].acertos || 0;
-                    const total = quizRows[0].totalPerguntas || 0;
+                    const acertos = Number(quizRows[0].acertos || 0);
+                    const total = Number(quizRows[0].totalPerguntas || 0);
 
                     const totalErros = total - acertos;
                     const porcentagemAcerto = total > 0
@@ -54,13 +53,13 @@ function fetchAndRespond(idVisitante, res) {
                     let paginas = [];
                     let acessos = [];
                     let totalPaginasDesbloqueadas = 0;
-                    let paginasAcessadasDistintas = progRows.length;
-
+                    
                     for (let i = 0; i < progRows.length; i++) {
                         const row = progRows[i];
                         paginas.push(row.pagina);
                         acessos.push(row.acessos);
-                        if (row.desbloqueou === 1) {
+                        
+                        if (row.desbloqueou > 0 || row.acessos > 0) {
                             totalPaginasDesbloqueadas++;
                         }
                     }
@@ -68,11 +67,11 @@ function fetchAndRespond(idVisitante, res) {
                     const dadosDashboard = {
                         idVisitante: idVisitanteReal,
                         visitorID: visitorID,
-                        acertos: Number(acertos),
-                        totalPerguntas: Number(total),
+                        acertos: acertos,
+                        totalPerguntas: total,
                         porcentagemAcerto: porcentagemAcerto,
                         totalErros: totalErros,
-                        totalPaginasAcessadas: paginasAcessadasDistintas,
+                        totalPaginasAcessadas: progRows.length,
                         totalPaginasDesbloqueadas: totalPaginasDesbloqueadas,
                         paginas: paginas,
                         acessos: acessos,
