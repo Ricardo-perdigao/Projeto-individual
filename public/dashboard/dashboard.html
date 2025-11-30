@@ -35,9 +35,9 @@
 
     <div class="pai">
         <div class="consulta-admin">
-            <h2><i class="fa-solid fa-magnifying-glass"></i> Consulta do Visitante</h2>
+            <h2>Consulta do Visitante</h2>
             
-            <div class="inputs-wrapper" style="display: flex; justify-content: center; gap: 10px; width: 100%;">
+            <div style="display: flex; justify-content: center; gap: 10px; width: 100%;">
                 <input type="number" id="idVisitanteInput" placeholder="ID do Visitante (Ex: 1)">
                 <button onclick="carregarDashboard()">BUSCAR DADOS</button>
             </div>
@@ -45,33 +45,33 @@
             <p id="feedbackUsuario" style="margin-top: 10px; color: var(--nevoa); font-size: 0.9rem; display: none;"></p>
         </div>
 
-        <div class="container dashboard-content">
+        <div>
             <div class="kpis">
                 <div class="kpicard1">
-                    <h4><i class="fa-solid fa-bullseye"></i> Acertos no Quiz</h4>
-                    <div class="kpi-valor">
-                        <span id="kpiAcertos">0</span> <span class="divisor">/</span> <span id="kpiTotalPerguntas">0</span>
+                    <h4> Acertos no Quiz</h4>
+                    <div>
+                        <span id="kpiAcertos">0</span>/</span> <span id="kpiTotalPerguntas">0</span>
                     </div>
                 </div>
 
                 <div class="kpicard2">
-                    <h4><i class="fa-solid fa-xmark"></i> Total de Erros</h4>
-                    <div class="kpi-valor">
+                    <h4>Total de Erros</h4>
+                    <div>
                         <span id="kpiTotalErros">0</span>
                     </div>
                 </div>
 
                 <div class="kpicard3">
-                    <h4><i class="fa-solid fa-percent"></i> Taxa de Sucesso</h4>
-                    <div class="kpi-valor">
+                    <h4>Taxa de Sucesso</h4>
+                    <div>
                         <span id="kpiPorcentagemAcerto">0.00%</span>
                     </div>
                 </div>
 
                 <div class="kpicard4">
-                    <h4><i class="fa-solid fa-lock-open"></i> Pág. Desbloqueadas</h4>
-                    <div class="kpi-valor">
-                        <span id="kpiPaginasDesbloqueadas">0</span> <span class="divisor">/</span> <span>5</span>
+                    <h4>Pág. Desbloqueadas</h4>
+                    <div>
+                        <span id="kpiPaginasDesbloqueadas">0</span>/<span>6</span>
                     </div>
                 </div>
             </div>
@@ -79,14 +79,14 @@
             <div class="charts-group">
                 <div class="chart-box">
                     <h3>Desempenho no Quiz</h3>
-                    <div class="canvas-container" style="height: 200px; display: flex; align-items: center; justify-content: center;">
+                    <div style="height: 270px; display: flex; align-items: center; justify-content: center;">
                         <canvas id="quizChart"></canvas>
                     </div>
                 </div>
 
                 <div class="chart-box">
                     <h3>Páginas desbloqueadas</h3>
-                    <div class="canvas-container">
+                    <div>
                         <canvas id="progressChart"></canvas>
                     </div>
                 </div>
@@ -96,8 +96,8 @@
 </body>
 
 <script>
-    let quizChartInstance = null;
-    let progressChartInstance = null;
+    let quizChart = null;
+    let progressChart = null;
 
     window.onload = buscarUltimoVisitante;
 
@@ -172,16 +172,16 @@
         document.getElementById('kpiPorcentagemAcerto').innerText = `0.00%`;
         document.getElementById('kpiPaginasDesbloqueadas').innerText = 0;
 
-        if (quizChartInstance) quizChartInstance.destroy();
-        if (progressChartInstance) progressChartInstance.destroy();
+        if (quizChart) quizChart;
+        if (progressChart) progressChart;
     }
 
     function renderizarGraficoQuiz(acertos, totalErros) {
-        if (quizChartInstance) quizChartInstance.destroy();
+        if (quizChart) quizChart;
 
         const ctx = document.getElementById('quizChart').getContext('2d');
 
-        quizChartInstance = new Chart(ctx, {
+        quizChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
                 labels: ['Acertos', 'Erros'],
@@ -203,11 +203,11 @@
     }
 
     function renderizarGraficoProgresso(labels, data) {
-        if (progressChartInstance) progressChartInstance.destroy();
+        if (progressChart) progressChart;
 
         const ctx = document.getElementById('progressChart').getContext('2d');
 
-        progressChartInstance = new Chart(ctx, {
+        progressChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: labels,
